@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio</title>
+</head>
+<body>
+
+    <nav>
+        <div class="Names"><h4>Hello...</h4> </div>             
+        <div class="Semua_menu">               
+            <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Skill">Skill</a></li>
+                <li><a href="#Project">Project</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="Home">
+            <img src="foto AwalMarudutGultom.jpg" alt="Awal Marudut Gultom" class="profile-pic">
+            <p class="Namaku">Awal Marudut Gultom</p><br>
+            <p class="tagline">      
+                Network Engineer | <span class="highlight">Python Developer & Cyber Security</span>
+            </p><br>
+        </section>
+
+        <section id="About">
+            <h2>About Me</h2>
+            <p class="tentang">I am a graduate of HKBP Private Vocational School, majoring in Computer Network Engineering. I achieved all my skills by studying independently without lectures or tutoring. </p> <br>
+        </section>
+
+        <section id="Skill">
+            <h2>[ My Technical Skills ]</h2>
+            <ul class="skill-container">
+                <li class="skill-card">Python Basic</li>
+                <li class="skill-card">Frontend (HTML, CSS, JS)</li>
+                <li class="skill-card">Networking (L2/L3)</li>
+                <li class="skill-card">Troubleshooting</li>
+                <li class="skill-card">Linux Admin</li>
+                <li class="skill-card">Cyber Security Awareness</li>
+                <li class="skill-card">Mobile App Dev (Kivy & Buildozer)</li>
+            </ul>
+        </section> <section id="Project">
+            <h2>Build APK</h2>
+            <div class="photo-container">
+                <div class="project-card">
+                    <img src="buildozer.jpg">
+                    <p>Buildozer configuration</p>
+                </div>
+                
+                <div class="project-card">
+                    <img src="Aplikasikalkulator.jpg">
+                    <p>It's already an application</p>
+                </div>
+                
+                <div class="project-card">
+                    <img src="Bukaaplikasikalkulator.jpg">
+                    <p>The application has been running</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="Contact">
+            <form action="https://formspree.io/f/mjgewyaa" method="POST" target="_blank">
+                <div>
+                    <label> Name</label><br>
+                    <input type="text" name="nama" placeholder=" Enter your name">
+                </div>
+                <br> 
+                <div>
+                    <label>Email</label><br>
+                    <input type="text" name="email" placeholder="Enter your email">
+                </div>
+                <div>
+                    <label>Message</label><br>
+                    <textarea name="Message" rows="5" placeholder="Write Message..."></textarea>
+                </div>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+          
+            <div class="Social-media">
+                <a href="https://youtube.com/@poordays?si=lXq4KuS7hgh8X_LX" target="_blank" rel="noopener noreferrer" >
+                    <img src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" alt="Youtube channel saya" height="auto">
+                </a>
+                <span style="pointer-events: none ;">Visit my Youtube channel</span>
+                
+                <a href="http://wa.me/6285810176672" target="_blank">
+                    <img src="https://img.icons8.com/?size=100&id=7OeRNqg6S7Vf&format=png&color=000000" alt="Wa saya" height="auto">
+                </a>
+                <span style="pointer-events: none;">Contact me on Whatsapp</span>
+                
+                <a href="http://facebook.com/awalread.1" target="_blank">
+                    <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="" height="auto">
+                </a>
+                <span style="pointer-events: none;">Visit my Facebook</span>
+            </div>
+        </section>
+    </main>
+
+    <div class="wave-footer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#007ACC" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <footer class="vs-footer">
+        <p>&copy; 2026 <strong>Awal Marudut Gultom</strong>. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const form = document.querySelector('#Contact form');
+        const inputs = form.querySelectorAll('input, textarea');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        function checkInputs() {
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === "") {
+                    allFilled = false;
+                }
+            });
+
+            if (allFilled) {
+                submitBtn.classList.add('btn-aktif');
+            } else {
+                submitBtn.classList.remove('btn-aktif');
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', checkInputs);
+        });
+    </script>
+
+    <script>
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = "all 0.5s ease";
+                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            });
+
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = "none";
+            });
+        });
+    </script>
+</body>
+</html>
