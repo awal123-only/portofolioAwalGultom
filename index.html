@@ -2,32 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio</title>
 </head>
 <body>
+    <div id="loader">
+    <div class="spinner"></div>
+</div>
 
     <nav>
-        <div class="Names"><h4>Hello...</h4> </div>             
-        <div class="Semua_menu">               
-            <ul>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#About">About</a></li>
-                <li><a href="#Skill">Skill</a></li>
-                <li><a href="#Project">Project</a></li>
-                <li><a href="#Contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="brand">
+        <img src="hi.png" alt="hy">
+        <span class="greeting">Halo, I'm Awal!</span>
+    </div>       
+    <div class="Semua_menu">               
+        <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#About">About</a></li>
+            <li><a href="#Skill">Skill</a></li>
+            <li><a href="#Project">Project</a></li>
+            <li><a href="#Contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
     <main>
         <section id="Home">
             <img src="foto AwalMarudutGultom.jpg" alt="Awal Marudut Gultom" class="profile-pic">
-            <p class="Namaku">Awal Marudut Gultom</p><br>
+            <h2 class="Namaku">Awal Marudut Gultom</h2><br>
             <p class="tagline">      
                 Network Engineer | <span class="highlight">Python Developer & Cyber Security</span>
             </p><br>
@@ -49,23 +52,33 @@
                 <li class="skill-card">Cyber Security Awareness</li>
                 <li class="skill-card">Mobile App Dev (Kivy & Buildozer)</li>
             </ul>
-        </section> <section id="Project">
-            <h2>Build APK</h2>
-            <div class="photo-container">
-                <div class="project-card">
-                    <img src="buildozer.jpg">
-                    <p>Buildozer configuration</p>
-                </div>
-                
-                <div class="project-card">
-                    <img src="Aplikasikalkulator.jpg">
-                    <p>It's already an application</p>
-                </div>
-                
-                <div class="project-card">
-                    <img src="Bukaaplikasikalkulator.jpg">
-                    <p>The application has been running</p>
-                </div>
+     <section id="Project">
+    <h2>Build APK</h2>
+    <div class="photo-container">
+        <div class="project-card">
+            <img src="buildozer.jpg">
+            <p>Buildozer configuration</p>
+        </div>
+        <div class="project-card">
+            <img src="Aplikasikalkulator.jpg">
+            <p>It's already an application</p>
+        </div>
+        <div class="project-card">
+            <img src="Bukaaplikasikalkulator.jpg">
+            <p>The application has been running</p>
+        </div>
+    </div> <div class="video-skill-container">
+        <h3>Demo Project / Activity</h3>
+        <div class="video-wrapper">
+            <video controls poster="thumbnail-video.jpg">
+                <source src="Myvideo.mp4" type="video/mp4">
+                Browser kamu tidak mendukung tag video.
+            </video>
+        </div>
+        <p class="video-desc">
+            <span>Project:</span> This video shows how I created a website port scanning tool.
+        </p>
+    </div>
             </div>
         </section>
 
@@ -75,7 +88,7 @@
                     <label> Name</label><br>
                     <input type="text" name="nama" placeholder=" Enter your name">
                 </div>
-                <br> 
+
                 <div>
                     <label>Email</label><br>
                     <input type="text" name="email" placeholder="Enter your email">
@@ -166,5 +179,13 @@
             });
         });
     </script>
+    <script>
+    window.addEventListener("load", function() {
+        const loader = document.getElementById("loader");
+        setTimeout(() => {
+            loader.classList.add("fade-out");
+        }, 1000); // 1000 = 1 detik tampilan loading
+    });
+</script>
 </body>
 </html>
