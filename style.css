@@ -30,7 +30,7 @@ nav li,
 }
 
 .Names h4{
-    margin-left: 15%;
+    margin-left: 10%;
     color: white;
     font-family: 'Coiny', cursive;
     font-size: 20px;
@@ -850,3 +850,4 @@ body {
     opacity: 0;
     pointer-events: none;
 }
+
