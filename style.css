@@ -58,13 +58,13 @@ nav a{
 
 #Home{
     text-align: center;
-    padding: 100px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 100px 20px;
+  
 }
 
-#Home p.Namaku{
+#Home h2.Namaku{
     font-size: 30px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   
 }
 
 .profile-pic {
@@ -237,53 +237,94 @@ section {
 .project-card, .profile-pic, nav a {
     will-change: transform; /* Memberitahu browser untuk siap-siap animasi (lebih lancar) */
 }
+/* --- PERBAIKAN AKHIR: ANIMASI TOMBOL & JARAK BAWAH --- */
+
+/* 1. Tombol Submit dengan Animasi */
+#Contact button {
+    width: 100%;
+    padding: 14px;
+    background-color: #a2d9ff;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    
+    /* Animasi Dasar */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efek saat kursor menyentuh tombol (Hover) */
+#Contact button:hover {
+    background-color: #007ACC; /* Berubah warna jadi biru tegas */
+    color: #ffffff;            /* Tulisan jadi putih */
+    transform: translateY(-3px); /* Tombol naik sedikit */
+    box-shadow: 0 5px 15px rgba(0, 122, 204, 0.3); /* Bayangan biru */
+}
+
+/* Efek saat tombol diklik (Active) */
+#Contact button:active {
+    transform: scale(0.95); /* Tombol mengecil sedikit saat ditekan */
+}
+
+/* --- PERBAIKAN TOTAL: FORM TETAP LANDSCAPE & SOSMED BERBARIS --- */
+
 #Contact {
-    padding: 100px 20px;
+    padding: 60px 20px 100px 20px; /* Jarak bawah ditambah biar nggak mepet */
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-/* Kotak Form */
-#Contact form {
     width: 100%;
-    max-width: 500px;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom: 50px;
 }
 
-/* Gaya Input & Textarea */
+/* Kotak Form Tetap Gepeng/Landscape */
+#Contact form {
+    width: 85% !important;
+    max-width: 800px;
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-sizing: border-box;
+}
+
+/* Supaya div di dalam form tidak ikut berbaris ke samping */
+#Contact form .form-group {
+    width: 100%;
+    text-align: left;
+    display: block; /* Memastikan input tetap di bawah label */
+}
+
+#Contact label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+}
+
 #Contact input, 
 #Contact textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
+    width: 100% !important;
+    padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    font-family: sans-serif;
-    box-sizing: border-box; /* Biar nggk luber */
-    transition: 0.3s;
+    border-radius: 4px; /* Kotak */
+    box-sizing: border-box;
 }
 
-#Contact input:focus, 
-#Contact textarea:focus {
-    border-color: #a2d9ff;
-    outline: none;
-    box-shadow: 0 0 8px rgba(162, 217, 255, 0.5);
-}
-
-/* Gaya Tombol Submit */
+/* Tombol Submit */
 #Contact button {
     width: 100%;
     padding: 15px;
     background-color: #a2d9ff;
-    color: white;
     border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
+    border-radius: 4px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
@@ -291,43 +332,48 @@ section {
 
 #Contact button:hover {
     background-color: #007ACC;
+    color: white;
     transform: translateY(-3px);
 }
+
+/* --- BAGIAN SOSIAL MEDIA (BERBARIS KE SAMPING) --- */
 .Social-media {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start; /* Sejajar kiri */
-    max-width: 500px;
+    flex-direction: row !important; /* Paksa berbaris ke samping */
+    justify-content: center;       /* Di tengah */
+    gap: 30px;                     /* Jarak antar icon */
+    width: 100%;
+    margin-top: 50px;              /* Jarak dari kotak form */
 }
 
 .Social-media a {
     display: flex;
+    flex-direction: column;        /* Icon di atas, teks di bawah */
     align-items: center;
     text-decoration: none;
-    gap: 15px;
     transition: 0.3s;
 }
 
 .Social-media img {
-    width: 40px; /* Ukuran icon seragam */
+    width: 40px;
     height: 40px;
 }
 
 .Social-media span {
+    margin-top: 8px;
+    font-size: 0.8rem;
     color: #555;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1rem;
 }
 
 .Social-media a:hover {
-    transform: translateX(10px); /* Efek geser saat disentuh */
+    transform: translateY(-5px);
 }
+
 /* Menghilangkan celah di bawah SVG gelombang */
 .wave-footer {
     line-height: 0;
     width: 100%;
-    margin-top: 50px; /* Jarak dari konten atas */
+    margin-top: 50px;
 }
 
 .wave-footer svg {
@@ -525,7 +571,6 @@ nav {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    font-family: "Coiny", system-ui;
     transition: 0.3s;
 }
 
@@ -564,4 +609,244 @@ nav {
     transform: translateY(-5px) scale(1.1);
     background: #a2d9ff;
     color: #000;
+}
+/* --- SETTING RESPONSIF (BIAR PAS DI HP) --- */
+@media screen and (max-width: 768px) {
+    
+    /* Navigasi: Atur ulang ruang agar muat semua */
+    nav {
+        padding: 0 10px; /* Kurangi jarak pinggir */
+        justify-content: space-around; /* Bagi ruang lebih adil */
+    }
+
+    .brand {
+        gap: 5px; /* Sempitkan jarak gambar & teks */
+    }
+
+    .brand img {
+        width: 35px; /* Kecilkan sedikit gambarnya */
+    }
+
+    .brand .greeting {
+        font-size: 12px; /* Kecilkan ukuran tulisan sapaan agar muat */
+        white-space: nowrap; /* Biar tulisan tidak turun ke bawah */
+    }
+
+    /* Menu: Perkecil jarak dan teks agar tidak tumpuk */
+    .Semua_menu ul {
+        gap: 8px; 
+    }
+
+    .Semua_menu li a {
+        font-size: 11px; 
+    }
+
+    /* Bagian Home & Konten */
+    #Home {
+        padding: 50px 15px;
+    }
+
+    .profile-pic {
+        width: 140px;
+        height: 140px;
+    }
+
+    /* Project Cards: Biar nggk luber ke samping */
+    .project-card {
+        width: 100%;
+        max-width: 320px;
+        margin: 10px auto;
+    }
+}
+/* Container Utama Video */
+.video-skill-container {
+    width: 85%;            /* Membuat video jauh lebih besar */
+    max-width: 1000px;     /* Batas maksimal agar tidak terlalu lebar di monitor raksasa */
+    margin: 60px auto;     /* Jarak atas-bawah yang lega agar tidak menempel ke form */
+    text-align: center;
+    padding: 20px;
+    background: #ffffff;   /* Background putih bersih agar senada dengan kartu di atasnya */
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05); /* Bayangan halus */
+}
+
+/* Judul Demo */
+.video-skill-container h3 {
+    font-family: 'Coiny', system-ui;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Kotak Video */
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;  /* Memaksa format lanskap layar lebar */
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* Menjaga rasio video asli */
+}
+
+/* Teks Deskripsi (Dirapikan) */
+.video-desc {
+    margin-top: 30px;      /* Jarak dari video */
+    padding: 20px;
+    background: #f4f4f4;   /* Warna abu-abu muda yang kontras dengan teks */
+    border-left: 6px solid #007ACC;
+    border-radius: 10px;
+    text-align: left;
+    color: #333;           /* Tulisan hitam agar jelas terbaca */
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.video-desc span {
+    font-weight: bold;
+    color: #007ACC;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Agar Pas di HP */
+@media screen and (max-width: 768px) {
+    .video-skill-container {
+        width: 95%;
+        margin: 30px auto;
+        padding: 10px;
+    }
+    
+    .video-desc {
+        font-size: 0.9rem;
+    }
+}
+/* --- PENYATUAN TOTAL JUDUL (IDENTIK DENGAN ABOUT) --- */
+
+/* Kita satukan semua ID dan Class judul dalam satu perintah */
+#About h2, 
+#Skill h2, 
+#Project h2, 
+.video-skill-container h3, 
+.section-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 2.5rem !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    text-align: center !important;
+    display: inline-block !important;
+    margin-bottom: 20px !important;
+    transition: transform 0.3s ease, color 0.3s ease !important;
+    cursor: pointer;
+    /* Reset gaya Coiny yang mungkin tertinggal */
+    font-style: normal !important;
+    text-transform: none !important;
+}
+
+/* Efek Hover (Sama Persis dengan About Me) */
+#About h2:hover, 
+#Skill h2:hover, 
+#Project h2:hover, 
+.video-skill-container h3:hover, 
+.section-title:hover {
+    transform: scale(1.1) !important;
+    color: #a2d9ff !important;
+}
+
+/* --- PENYATUAN TOTAL DESKRIPSI (IDENTIK DENGAN TENTANG) --- */
+.tentang, 
+.video-desc, 
+.tagline {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 1.2rem !important;
+    color: #555 !important;
+    line-height: 1.8 !important;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    display: block !important;
+}
+
+.tentang:hover, 
+.video-desc:hover, 
+.tagline:hover {
+    transform: translateY(-10px) !important;
+    color: #000 !important;
+}
+/* Menurunkan tulisan Build APK agar tidak terlalu rapat ke atas */
+#Project h2.section-title, 
+#Project h2 {
+    margin-top: 50px !important; /* Tambahkan jarak dari atas */
+    margin-bottom: 30px !important; /* Jarak ke kartu project di bawahnya */
+}
+
+/* Sekalian buat Skill jika dirasa terlalu ke atas */
+#Skill h2 {
+    margin-top: 50px !important;
+}
+
+/* Pastikan section Project punya ruang napas */
+#Project {
+    padding-top: 40px !important;
+    justify-content: flex-start !important; /* Agar tidak dipaksa ke tengah layar jika konten sedikit */
+}
+/* Animasi Muncul dari Bawah */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Terapkan ke Hero Section atau seluruh Body */
+body {
+    animation: fadeInUp 1.2s ease-out;
+}
+
+/* Tambahkan efek halus pada teks judul */
+.hero-text h1 {
+    animation: fadeInUp 1.5s ease-out;
+}
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff; /* Warna background loading */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #a2d9ff; /* Warna animasi */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
 }
