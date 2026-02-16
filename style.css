@@ -2,22 +2,7 @@
     margin: 0;
 }
 
-/* Gunakan selektor yang sangat spesifik supaya titik-titik (bullet) PASTI hilang */
-nav ul, 
-.Semua_menu ul {
-    list-style: none !important; /* !important memaksa bullet titik-titik hilang */
-    list-style-type: none !important;
-    margin: 0; 
-    padding: 0;
-    display: flex; /* Membuat menu berjejer ke samping */
-    flex-direction: row;
-}
 
-/* Menghilangkan bullet pada tiap item list */
-nav li, 
-.Semua_menu li {
-    list-style: none !important;
-}
 
 .Semua_menu{
     color: white;
@@ -27,38 +12,105 @@ nav li,
     font-weight: 400;
     font-style: normal;
     transform: translateX(10px);
+     display: flex;
+    overflow-x: auto; /* Kunci agar bisa di-scroll ke samping kalau kepotong */
+    white-space: nowrap; /* Mencegah menu turun ke baris baru */
+    -webkit-overflow-scrolling: touch; /* Biar scroll-nya halus di iPhone/Safari */
+    scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+    padding: 10px 0;
+}
+/* 3. Bagian Menu (Home, About, dll) */
+.Semua_menu ul {
+    display: flex;       /* Menu berjejer ke samping */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 15px;           /* Jarak antar menu */
+    padding: 0 15px;
+     flex-direction: row !important; /* Memastikan tetap berbaris ke samping */
+  
+     
+}
+.Semua_menu::-webkit-scrollbar {
+    display: none; /* Sembunyikan scrollbar di Chrome/Safari */
 }
 
-.Names h4{
-    margin-left: 10%;
-    color: white;
-    font-family: 'Coiny', cursive;
-    font-size: 20px;
-    display: block;
-    transform: translateY(30px);
-    font-family: "Coiny", system-ui;
-    font-weight: 400;
-    font-style: normal;
-}
+
 
 nav{
    
     height: 80px;
+     background-color: rgb(0, 102, 255);
+    height: 80px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;             /* Mengaktifkan mode baris */
+    justify-content: space-between; /* Brand di kiri, Menu di kanan */
+    align-items: center;       /* SEMUA ELEMEN SEJAJAR TENGAH (Vertikal) */
+    padding: 0 5%;             /* Jarak dari pinggir layar */
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
 }
 
 /* memberi jarak antar menu*/
 nav li{
     margin-left: 20px; /*jarak antar tulisan menu*/
+    
 }
 
 nav a{
     text-decoration: none; /*menghilakan garis bawah*/
     color: white;
+    position: relative;
+    font-family: "Coiny", system-ui;
+    transition: all 0.3s ease;
 }
+/* Gaya saat menu aktif/terpilih (Scrollspy) */
+.Semua_menu ul li a.active {
+    background-color: white !important;
+    color: #007ACC !important; 
+    font-weight: bold !important;
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transform: scale(1.1);
+}
+
+.Semua_menu ul li a.active::first-letter {
+    color: #ffd700 !important;
+}
+
+/* GAYA DASAR MENU */
+.Semua_menu ul li a {
+    text-decoration: none;
+    color: white !important; /* Warna teks saat diam */
+    padding: 8px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* EFEK SAAT DISENTUH POINTER (HOVER) */
+.Semua_menu ul li a:hover {
+    background-color: white !important; /* Jadi kotak putih */
+    color: #0066ff !important;         /* Teks jadi biru */
+    font-weight: bold !important;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3) !important; /* Efek bayangan */
+    transform: scale(1.1) translateY(-2px); /* Membesar & naik sedikit */
+}
+
+/* Huruf pertama jadi kuning saat disentuh pointer */
+.Semua_menu ul li a:hover::first-letter {
+    color: #ffcc00 !important;
+}
+
 
 #Home{
     text-align: center;
     padding: 100px 20px;
+   
   
 }
 
@@ -75,16 +127,27 @@ nav a{
     border: 5px solid white; /*memberi bingkai putih tipis*/
     box-shadow: 0 0 20px rgba(0, 0, 0, 1); /*membuat bayangan halus agar kelihatan estetis*/
     margin-bottom: 20px;
+    transition: all 0.5s ease !important;
+    
+}
+.profile-pic:hover {
+    transform: scale(1.1) rotate(5deg); /* Membesar dan miring */
+    filter: drop-shadow(0 0 15px #a2d9ff); /* Efek glowing biru */
 }
 
 #About{
     text-align: center;
     padding: 80px 20px; /* SUDAH DITAMBAH px */
+    
+    
 }
 
 #About h2{
-    font-size: 2rem;
     margin-bottom: 20px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block; /* Supaya transisi scale enak dilihat */
+    transition: transform 0.3s ease;
 }
 
 .tentang{
@@ -130,6 +193,7 @@ nav a{
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     text-align: center;
     
+    
     /* Setup Animasi 3D */
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
     transform-style: preserve-3d;
@@ -137,20 +201,24 @@ nav a{
 
 /* Efek 3D saat kursor mendekat (Hover) */
 .project-card:hover {
-    /* Kartu sedikit maju dan terangkat */
+    /* Foto sedikit maju dan terangkat */
     transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 /* Mengatur foto agar rapi di dalam kartu yang panjang */
 .project-card img {
-    width: 100%;
-    height: 350px; /* Foto dibuat lebih panjang/tinggi */
-    object-fit: cover;
+   width: 100%;
+    height: 350px; 
+    
+    object-fit: contain; 
+    
+    /* background tipis agar kalau gambar aslinya kecil, tetap rapi */
+    background-color: #f9f9f9; 
+    
     border-radius: 15px;
     margin-bottom: 15px;
-    /* Memberi efek foto seolah keluar dari kartu */
-    transform: translateZ(30px); 
+    transform: translateZ(30px);
 }
 
 .project-card p {
@@ -161,70 +229,19 @@ nav a{
     /* Teks juga diberi efek kedalaman */
     transform: translateZ(20px);
 }
-.project-card img {
-    width: 100%;
-    height: 350px; /* Tinggi sudah sesuai permintaan kamu tadi */
-    
-    /* INI KUNCINYA: Ganti 'cover' jadi 'contain' agar gambar tidak kepotong */
-    object-fit: contain; 
-    
-    /* Tambahkan background tipis agar kalau gambar aslinya kecil, tetap rapi */
-    background-color: #f9f9f9; 
-    
-    border-radius: 15px;
-    margin-bottom: 15px;
-    transform: translateZ(30px);
-}
+
 html {
     scroll-behavior: smooth; /* Scroll mulus */
-    scroll-padding-top: 80px; /* Biar pas diklik nggk kepotong nav */
+    scroll-padding-top: 80px; /* Biar pas diklik nggk kepotong menu */
 }
 
-nav {
-    background-color: rgba(15, 15, 15, 0.95); /* Hitam pekat */
-    border-bottom: 2px solid #007ACC; /* Garis bawah biru neon */
-    height: 80px;
-    position: fixed; /* Menempel di atas walau di-scroll */
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    backdrop-filter: blur(10px); /* Efek blur kaca di belakang menu */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
 
 /* Tambahkan padding di main supaya konten nggk ketutup nav yang di-fixed */
 main {
     padding-top: 80px; 
 }
-nav li a {
-    position: relative;
-    font-family: "Coiny", system-ui;
-    transition: all 0.3s ease;
-}
 
-/* Animasi tulisan membesar sedikit saat di-hover */
-nav li a:hover {
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255,255,255,0.8);
-    transform: scale(1.1);
-}
 
-/* Animasi garis bawah muncul dari tengah */
-nav li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 50%;
-    background-color: white;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-nav li a:hover::after {
-    width: 100%;
-}
 section {
     min-height: 100vh; /* Tiap menu memenuhi 1 layar penuh */
     display: flex;
@@ -241,15 +258,14 @@ section {
 
 /* 1. Tombol Submit dengan Animasi */
 #Contact button {
-    width: 100%;
-    padding: 14px;
+     width: 100%;
+    padding: 15px;
     background-color: #a2d9ff;
-    color: #333;
     border: none;
     border-radius: 4px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
+    transition: 0.3s;
     
     /* Animasi Dasar */
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -265,7 +281,7 @@ section {
     box-shadow: 0 5px 15px rgba(0, 122, 204, 0.3); /* Bayangan biru */
 }
 
-/* Efek saat tombol diklik (Active) */
+/* Efek saat tombol diklik  */
 #Contact button:active {
     transform: scale(0.95); /* Tombol mengecil sedikit saat ditekan */
 }
@@ -278,9 +294,11 @@ section {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    min-height: auto !important; /* Jangan dipaksa 100vh */
+    padding-bottom: 50px !important; /* Jarak antara Form dan Footer */
 }
 
-/* Kotak Form Tetap Gepeng/Landscape */
+
 #Contact form {
     width: 85% !important;
     max-width: 800px;
@@ -318,23 +336,8 @@ section {
     box-sizing: border-box;
 }
 
-/* Tombol Submit */
-#Contact button {
-    width: 100%;
-    padding: 15px;
-    background-color: #a2d9ff;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
 
-#Contact button:hover {
-    background-color: #007ACC;
-    color: white;
-    transform: translateY(-3px);
-}
+
 
 /* --- BAGIAN SOSIAL MEDIA (BERBARIS KE SAMPING) --- */
 .Social-media {
@@ -379,79 +382,36 @@ section {
 .wave-footer svg {
     display: block;
     width: 100%;
-    height: auto;
+    height: 80%;
+    margin-top: -240px;
 }
 
 /* Mengatur Footer utama agar menyambung dengan warna wave */
 .vs-footer {
-    background-color: #007ACC; /* Warna harus sama dengan 'fill' di SVG kamu */
     color: white;
     text-align: center;
     padding: 20px 0;
-    font-family: 'Oswald', sans-serif;
-    margin-top: -1px; /* Trik untuk menghilangkan garis putih halus di beberapa browser */
+    width: 100%;
+    margin-top: 0; /* Hilangkan jarak kosong di atas footer */
+    font-family: Arial, sans-serif;
+    margin-top: -100px;
 }
 
 .vs-footer p {
     margin: 0;
     font-size: 0.9rem;
     letter-spacing: 1px;
+   
 }
 
 .vs-footer strong {
-    color: #ffd700; /* Memberi warna emas sedikit pada namamu agar menonjol */
-}
-/* --- PERBAIKAN SEKSI ABOUT --- */
-#About {
-    padding: 100px 20px;
-    text-align: center;
+    color: #ffd700; /* Memberi warna emas sedikit pada nama agar menonjol */
 }
 
-#About h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    display: inline-block; /* Supaya transisi scale enak dilihat */
-    transition: transform 0.3s ease;
-}
-
-#About h2:hover {
-    transform: scale(1.1);
-    color: #a2d9ff;
-}
-
-/* --- ANIMASI TEKS TENTANG (SAAT DISENTUH) --- */
-.tentang {
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-    font-size: 1.2rem;
-    color: #555;
-    cursor: pointer;
-    
-    /* Ini rahasianya supaya bisa goyang/gerak */
-    display: block; 
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
-
-.tentang:hover {
-    transform: translateY(-10px); /* Teks naik ke atas */
-    color: #000; /* Warna jadi lebih tegas */
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.1); /* Efek bayangan halus */
-}
-
-/* --- ANIMASI FOTO DI HOME --- */
-.profile-pic {
-    transition: all 0.5s ease !important;
-}
-
-.profile-pic:hover {
-    transform: scale(1.1) rotate(5deg); /* Membesar dan miring */
-    filter: drop-shadow(0 0 15px #a2d9ff); /* Efek glowing biru */
-}
 nav img {
     width: 50px; /* Atur ukuran gambar sesuai selera */
     height: auto;
-    margin-left: 5%; /* Jarak dari pinggir kiri */
+    margin-left: 0%; /* Jarak dari pinggir kiri */
     cursor: pointer;
     
     /* Posisikan agar sejajar dengan menu */
@@ -474,7 +434,7 @@ nav img {
     100% { transform: rotate(0deg); }
 }
 
-/* Tambahan: Efek kalau kursor nempel, gambarnya membesar */
+/* Tambahan: Efek kalau kursor nempel*/
 nav img:hover {
     animation-play-state: paused; /* Berhenti goyang pas disentuh */
     transform: scale(1.2);
@@ -487,18 +447,11 @@ nav img:hover {
     gap: 10px; /* Jarak antara gambar dan tulisan */
 }
 
-nav img {
-    width: 45px;
-    height: auto;
-    animation: hi-goyang 2s ease-in-out infinite;
-    transform-origin: bottom center;
-}
-
 /* Gaya tulisan menyapa */
 .greeting {
     font-family: "Coiny", system-ui;
     font-size: 18px;
-    color: white;
+    color: whitesmoke;
     font-weight: bold;
     opacity: 0.9;
     /* Animasi teks halus */
@@ -524,61 +477,8 @@ nav img {
     80% { transform: rotate(-5deg); }
 }
 /* 1. Navigasi Utama (Container) */
-nav {
-    background-color: rgb(0, 102, 255);
-    height: 80px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;             /* Mengaktifkan mode baris */
-    justify-content: space-between; /* Brand di kiri, Menu di kanan */
-    align-items: center;       /* SEMUA ELEMEN SEJAJAR TENGAH (Vertikal) */
-    padding: 0 5%;             /* Jarak dari pinggir layar */
-    box-sizing: border-box;
-    backdrop-filter: blur(10px);
-}
 
-/* 2. Bagian Brand (Gambar & Tulisan Halo) */
-.brand {
-    display: flex;
-    align-items: center; /* Gambar & Teks sejajar lurus */
-    gap: 15px;           /* Jarak antara gambar dan teks */
-}
 
-.brand img {
-    width: 45px;
-    height: auto;
-    animation: hi-goyang 2s ease-in-out infinite;
-}
-
-.brand .greeting {
-    font-family: "Coiny", system-ui;
-    font-size: 18px;
-    color: white;
-}
-
-/* 3. Bagian Menu (Home, About, dll) */
-.Semua_menu ul {
-    display: flex;       /* Menu berjejer ke samping */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 25px;           /* Jarak antar menu */
-}
-
-.Semua_menu li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-/* Efek Hover Menu */
-.Semua_menu li a:hover {
-    transform: scale(1.1);
-    color: #ffd700;
-}
 /* Menghilangkan titik-titik di kontainer skill */
 .skill-container {
     list-style: none !important; /* Memaksa titik hilang */
@@ -618,45 +518,6 @@ nav {
         padding: 0 10px; /* Kurangi jarak pinggir */
         justify-content: space-around; /* Bagi ruang lebih adil */
     }
-
-    .brand {
-        gap: 5px; /* Sempitkan jarak gambar & teks */
-    }
-
-    .brand img {
-        width: 35px; /* Kecilkan sedikit gambarnya */
-    }
-
-    .brand .greeting {
-        font-size: 12px; /* Kecilkan ukuran tulisan sapaan agar muat */
-        white-space: nowrap; /* Biar tulisan tidak turun ke bawah */
-    }
-
-    /* Menu: Perkecil jarak dan teks agar tidak tumpuk */
-    .Semua_menu ul {
-        gap: 8px; 
-    }
-
-    .Semua_menu li a {
-        font-size: 11px; 
-    }
-
-    /* Bagian Home & Konten */
-    #Home {
-        padding: 50px 15px;
-    }
-
-    .profile-pic {
-        width: 140px;
-        height: 140px;
-    }
-
-    /* Project Cards: Biar nggk luber ke samping */
-    .project-card {
-        width: 100%;
-        max-width: 320px;
-        margin: 10px auto;
-    }
 }
 /* Container Utama Video */
 .video-skill-container {
@@ -665,7 +526,7 @@ nav {
     margin: 60px auto;     /* Jarak atas-bawah yang lega agar tidak menempel ke form */
     text-align: center;
     padding: 20px;
-    background: #ffffff;   /* Background putih bersih agar senada dengan kartu di atasnya */
+    background: #ffffff;   
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.05); /* Bayangan halus */
 }
@@ -725,7 +586,6 @@ nav {
         font-size: 0.9rem;
     }
 }
-/* --- PENYATUAN TOTAL JUDUL (IDENTIK DENGAN ABOUT) --- */
 
 /* Kita satukan semua ID dan Class judul dalam satu perintah */
 #About h2, 
@@ -747,7 +607,6 @@ nav {
     text-transform: none !important;
 }
 
-/* Efek Hover (Sama Persis dengan About Me) */
 #About h2:hover, 
 #Skill h2:hover, 
 #Project h2:hover, 
@@ -757,7 +616,6 @@ nav {
     color: #a2d9ff !important;
 }
 
-/* --- PENYATUAN TOTAL DESKRIPSI (IDENTIK DENGAN TENTANG) --- */
 .tentang, 
 .video-desc, 
 .tagline {
@@ -789,12 +647,6 @@ nav {
     margin-bottom: 30px !important; /* Jarak ke kartu project di bawahnya */
 }
 
-/* Sekalian buat Skill jika dirasa terlalu ke atas */
-#Skill h2 {
-    margin-top: 50px !important;
-}
-
-/* Pastikan section Project punya ruang napas */
 #Project {
     padding-top: 40px !important;
     justify-content: flex-start !important; /* Agar tidak dipaksa ke tengah layar jika konten sedikit */
@@ -850,4 +702,3 @@ body {
     opacity: 0;
     pointer-events: none;
 }
-
