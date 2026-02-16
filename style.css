@@ -251,6 +251,12 @@ section {
     padding: 20px;
     box-sizing: border-box;
 }
+section, #Contact {
+    min-height: auto !important;
+    height: auto !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
 .project-card, .profile-pic, nav a {
     will-change: transform; /* Memberitahu browser untuk siap-siap animasi (lebih lancar) */
 }
@@ -289,13 +295,10 @@ section {
 /* --- PERBAIKAN TOTAL: FORM TETAP LANDSCAPE & SOSMED BERBARIS --- */
 
 #Contact {
-    padding: 60px 20px 100px 20px; /* Jarak bawah ditambah biar nggak mepet */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    min-height: auto !important; /* Jangan dipaksa 100vh */
-    padding-bottom: 50px !important; /* Jarak antara Form dan Footer */
+    min-height: auto !important; 
+    height: auto !important;
+    padding-bottom: 0 !important; 
+    margin-bottom: 0 !important;
 }
 
 
@@ -338,15 +341,11 @@ section {
 
 
 
-
-/* --- BAGIAN SOSIAL MEDIA (BERBARIS KE SAMPING) --- */
 .Social-media {
+    margin-top: 30px !important; 
     display: flex;
-    flex-direction: row !important; /* Paksa berbaris ke samping */
-    justify-content: center;       /* Di tengah */
-    gap: 30px;                     /* Jarak antar icon */
-    width: 100%;
-    margin-top: 50px;              /* Jarak dari kotak form */
+    gap: 30px;
+    justify-content: center;
 }
 
 .Social-media a {
@@ -372,40 +371,39 @@ section {
     transform: translateY(-5px);
 }
 
-/* Menghilangkan celah di bawah SVG gelombang */
-.wave-footer {
-    line-height: 0;
-    width: 100%;
-    margin-top: 50px;
-}
 
-.wave-footer svg {
-    display: block;
-    width: 100%;
-    height: 80%;
-    margin-top: -240px;
-}
 
-/* Mengatur Footer utama agar menyambung dengan warna wave */
+/* Footer Box */
 .vs-footer {
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    width: 100%;
-    margin-top: 0; /* Hilangkan jarak kosong di atas footer */
-    font-family: Arial, sans-serif;
-    margin-top: -100px;
+    background-color: #0070cc !important; /* Warna biru wave */
+    margin-top: -2px !important; /* Menutup celah putih antara wave dan footer */
+    padding: 10px 0 30px 0 !important;
 }
 
+/* Tulisan Copyright */
 .vs-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-   
+    color: white !important;
+    margin: 0 !important;
+    font-size: 14px;
+    position: relative;
+    z-index: 101; /* Memastikan tulisan ada di lapisan paling atas */
+    text-align: center;
 }
 
-.vs-footer strong {
-    color: #ffd700; /* Memberi warna emas sedikit pada nama agar menonjol */
+
+
+@media (max-width: 768px) {
+    .wave-footer {
+        margin-top: 20px;
+    }
+    
+    .wave-footer svg {
+        height: 50px; /* Batasi tinggi gelombang di HP agar tidak terlalu makan tempat */
+    }
+
+    .vs-footer {
+        padding: 20px 0;
+    }
 }
 
 nav img {
