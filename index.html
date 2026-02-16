@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio</title>
 </head>
@@ -14,7 +14,7 @@
     <nav>
     <div class="brand">
         <img src="hi.png" alt="hy">
-        <span class="greeting">Halo, I'm Awal!</span>
+        <span class="greeting">Halo, <br> I'm Awal!</span>
     </div>       
     <div class="Semua_menu">               
         <ul>
@@ -42,7 +42,7 @@
         </section>
 
         <section id="Skill">
-            <h2>[ My Technical Skills ]</h2>
+            <h2>[ My Technical Skills ]</h2><br>
             <ul class="skill-container">
                 <li class="skill-card">Python Basic</li>
                 <li class="skill-card">Frontend (HTML, CSS, JS)</li>
@@ -52,6 +52,7 @@
                 <li class="skill-card">Cyber Security Awareness</li>
                 <li class="skill-card">Mobile App Dev (Kivy & Buildozer)</li>
             </ul>
+            </section>
      <section id="Project">
     <h2>Build APK</h2>
     <div class="photo-container">
@@ -127,7 +128,7 @@
     </div>
 
     <footer class="vs-footer">
-        <p>&copy; 2026 <strong>Awal Marudut Gultom</strong>. All Rights Reserved.</p>
+        <p>&copy; 2026 <strong>🎃Awal Marudut Gultom</strong>. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -186,6 +187,39 @@
             loader.classList.add("fade-out");
         }, 1000); // 1000 = 1 detik tampilan loading
     });
+</script>
+
+    
+<script>
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".Semua_menu ul li a");
+    
+    let currentId = "";
+
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        // Jarak deteksi (100px dari atas)
+        if (pageYOffset >= sectionTop - 100) {
+            currentId = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + currentId) {
+            link.classList.add("active");
+            
+            // FITUR PENTING: Jika menu kepotong di HP, 
+            // script ini akan menggeser menu yang aktif ke tengah secara otomatis
+            link.scrollIntoView({
+                behavior: "smooth",
+                inline: "center",
+                block: "nearest"
+            });
+        }
+    });
+});
 </script>
 </body>
 </html>
