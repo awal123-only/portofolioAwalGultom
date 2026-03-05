@@ -700,3 +700,100 @@ body {
     opacity: 0;
     pointer-events: none;
 }
+/* ===== MOBILE RESPONSIVE FIX ===== */
+@media screen and (max-width: 480px) {
+
+    /* NAV */
+    nav {
+        padding: 0 8px;
+        height: 65px;
+    }
+    .greeting {
+        font-size: 13px;
+    }
+    nav img {
+        width: 38px;
+    }
+    .Semua_menu ul {
+        gap: 4px;
+        padding: 0 6px;
+    }
+    .Semua_menu ul li a {
+        padding: 6px 9px;
+        font-size: 13px;
+    }
+
+    /* HOME */
+    #Home {
+        padding: 90px 16px 40px;
+    }
+    .profile-pic {
+        width: 140px;
+        height: 140px;
+    }
+    #Home h2.Namaku {
+        font-size: 22px;
+    }
+    .tagline {
+        font-size: 1rem !important;
+    }
+
+    /* ABOUT & SKILL */
+    #About, #Skill {
+        padding: 50px 16px;
+    }
+    #About h2, #Skill h2, #Project h2 {
+        font-size: 1.8rem !important;
+    }
+    .tentang {
+        font-size: 1rem !important;
+    }
+
+    /* PROJECT CARDS */
+    .photo-container {
+        padding: 20px 10px;
+        gap: 16px;
+    }
+    .project-card {
+        width: 100%;
+        min-height: auto;
+    }
+    .project-card img {
+        height: 220px;
+    }
+
+    /* VIDEO */
+    .video-skill-container {
+        width: 98%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    /* CONTACT FORM */
+    #Contact form {
+        width: 95% !important;
+        padding: 20px 16px;
+    }
+
+    /* SOCIAL MEDIA */
+    .Social-media {
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    .Social-media span {
+        font-size: 0.7rem;
+    }
+
+    /* CHATBOT POPUP */
+    #chat-popup {
+        width: 95% !important;
+        height: 85dvh !important;
+        max-width: none !important;
+    }
+    #chat-btn {
+        bottom: 16px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
