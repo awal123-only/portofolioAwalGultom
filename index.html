@@ -126,6 +126,144 @@
         <p>&copy; 2026 <strong>🎃Awal Marudut Gultom</strong>. All Rights Reserved.</p>
     </footer>
 
+    <!-- ========== CHATBOT POPUP ========== -->
+    <button id="chat-btn" onclick="toggleChat()">💬 Tanya AI</button>
+
+    <div id="chat-overlay" onclick="toggleChat()"></div>
+
+    <div id="chat-popup">
+        <div id="chat-header">
+            <span>🤖 Awal AI Assistant</span>
+            <button onclick="toggleChat()">✕</button>
+        </div>
+        <div id="chat-messages">
+            <div class="msg bot">Halo! Saya AI assistant milik Awal. Ada yang bisa saya bantu? 😊</div>
+        </div>
+        <div id="chat-input-area">
+            <input id="chat-input" type="text" placeholder="Ketik pesan..." onkeydown="if(event.key==='Enter') sendMsg()"/>
+            <button onclick="sendMsg()">➤</button>
+        </div>
+    </div>
+
+    <style>
+        #chat-btn {
+            position: fixed; bottom: 28px; right: 28px; z-index: 9998;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white; border: none; padding: 13px 22px;
+            border-radius: 30px; font-size: 15px; cursor: pointer;
+            box-shadow: 0 4px 20px rgba(79,70,229,0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #chat-btn:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(79,70,229,0.6); }
+
+        #chat-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.4); z-index: 9998;
+            backdrop-filter: blur(3px);
+        }
+        #chat-overlay.open { display: block; }
+
+        #chat-popup {
+            display: none; position: fixed;
+            top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
+            width: 90%; max-width: 400px; height: 520px;
+            background: white; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 9999; flex-direction: column; overflow: hidden;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            opacity: 0;
+        }
+        #chat-popup.open {
+            display: flex; transform: translate(-50%, -50%) scale(1); opacity: 1;
+        }
+
+        #chat-header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white; padding: 16px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-weight: bold; font-size: 15px;
+        }
+        #chat-header button {
+            background: rgba(255,255,255,0.2); border: none; color: white;
+            width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px;
+        }
+
+        #chat-messages {
+            flex: 1; overflow-y: auto; padding: 14px;
+            display: flex; flex-direction: column; gap: 10px;
+            background: #f8f8fc;
+        }
+
+        .msg { max-width: 82%; padding: 10px 14px; border-radius: 16px; font-size: 14px; line-height: 1.5; word-wrap: break-word; }
+        .msg.user { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; align-self: flex-end; border-radius: 16px 16px 4px 16px; }
+        .msg.bot { background: white; color: #333; align-self: flex-start; border-radius: 16px 16px 16px 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .msg.typing { color: #aaa; font-style: italic; background: white; }
+
+        #chat-input-area {
+            display: flex; padding: 12px; gap: 8px;
+            border-top: 1px solid #eee; background: white;
+        }
+        #chat-input {
+            flex: 1; border: 1.5px solid #e0e0f0; border-radius: 24px;
+            padding: 9px 16px; font-size: 14px; outline: none;
+            transition: border-color 0.2s;
+        }
+        #chat-input:focus { border-color: #4f46e5; }
+        #chat-input-area button {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white; border: none; border-radius: 50%;
+            width: 40px; height: 40px; cursor: pointer; font-size: 17px;
+            transition: transform 0.2s;
+        }
+        #chat-input-area button:hover { transform: scale(1.1); }
+    </style>
+
+    <script>
+        // Ganti dengan URL Railway kamu setelah deploy!
+        const BACKEND_URL = "RAILWAY_URL_KAMU";
+
+        function toggleChat() {
+            document.getElementById('chat-popup').classList.toggle('open');
+            document.getElementById('chat-overlay').classList.toggle('open');
+            if (document.getElementById('chat-popup').classList.contains('open')) {
+                document.getElementById('chat-input').focus();
+            }
+        }
+
+        function addMsg(teks, role) {
+            const div = document.createElement('div');
+            div.className = 'msg ' + role;
+            div.textContent = teks;
+            document.getElementById('chat-messages').appendChild(div);
+            document.getElementById('chat-messages').scrollTop = 99999;
+            return div;
+        }
+
+        async function sendMsg() {
+            const input = document.getElementById('chat-input');
+            const pesan = input.value.trim();
+            if (!pesan) return;
+            input.value = '';
+            addMsg(pesan, 'user');
+            const typing = addMsg('Mengetik...', 'bot typing');
+
+            try {
+                const res = await fetch(BACKEND_URL + '/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pesan })
+                });
+                const data = await res.json();
+                typing.remove();
+                addMsg(data.balasan, 'bot');
+            } catch {
+                typing.remove();
+                addMsg('❌ Gagal konek ke server. Coba lagi nanti.', 'bot');
+            }
+        }
+    </script>
+    <!-- ========== END CHATBOT ========== -->
+
     <script>
         const form = document.querySelector('#Contact form');
         const inputs = form.querySelectorAll('input, textarea');
@@ -180,42 +318,36 @@
         const loader = document.getElementById("loader");
         setTimeout(() => {
             loader.classList.add("fade-out");
-        }, 1000); // 1000 = 1 detik tampilan loading
+        }, 1000);
     });
-</script>
+    </script>
 
-    
-<script>
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".Semua_menu ul li a");
-    
-    let currentId = "";
+    <script>
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".Semua_menu ul li a");
+        
+        let currentId = "";
 
-    sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        // Jarak deteksi (100px dari atas)
-        if (pageYOffset >= sectionTop - 100) {
-            currentId = section.getAttribute("id");
-        }
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 100) {
+                currentId = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + currentId) {
+                link.classList.add("active");
+                link.scrollIntoView({
+                    behavior: "smooth",
+                    inline: "center",
+                    block: "nearest"
+                });
+            }
+        });
     });
-
-    navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + currentId) {
-            link.classList.add("active");
-            
-            // FITUR PENTING: Jika menu kepotong di HP, 
-            // script ini akan menggeser menu yang aktif ke tengah secara otomatis
-            link.scrollIntoView({
-                behavior: "smooth",
-                inline: "center",
-                block: "nearest"
-            });
-        }
-    });
-});
-</script>
+    </script>
 </body>
 </html>
-
