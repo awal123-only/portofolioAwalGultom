@@ -1,360 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Awal Marudut Gultom | Cybersecurity & Python Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="loader">
+
+<div id="loader">
     <div class="spinner"></div>
 </div>
 
-    <nav>
+<nav>
     <div class="brand">
-        <img src="hi.png" alt="hy">
-        <span class="greeting">Halo, <br> I'm Awal!</span>
-    </div>       
-    <div class="Semua_menu">               
+        <img src="hi.png" alt="Awal">
+        <span class="greeting">Awal Marudut Gultom</span>
+    </div>
+    <div class="Semua_menu">
         <ul>
             <li><a href="#Home">Home</a></li>
             <li><a href="#About">About</a></li>
             <li><a href="#Skill">Skill</a></li>
-            <li><a href="#Project">Project</a></li>
+            <li><a href="#Project">Projects</a></li>
             <li><a href="#Contact">Contact</a></li>
+            <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">🌙</button></li>
         </ul>
     </div>
 </nav>
 
-    <main>
-        <section id="Home">
-            <img src="images (7).jpeg" alt="Awal Marudut Gultom" class="profile-pic">
-            <h2 class="Namaku">Awal Marudut Gultom</h2><br>
-            <p class="tagline">      
-                Network Engineer | <span class="highlight">Python Developer & Cyber Security</span>
-            </p><br>
-        </section>
-
-        <section id="About">
-            <h2>About Me</h2>
-            <p class="tentang"> Majoring in Computer Network Engineering. I achieved all my skills by studying independently without lectures or tutoring. </p> <br>
-        </section>
-
-        <section id="Skill">
-            <h2>[ My Technical Skills ]</h2><br>
-            <ul class="skill-container">
-               <li class="skill-card">Python Development</li>
-               <li class="skill-card">Web Frontend (HTML, CSS, JS)</li>
-               <li class="skill-card">Network Engineering (L2/L3)</li>
-               <li class="skill-card">Linux System Administration</li>
-               <li class="skill-card">Cyber Security Awareness</li>
-              <li class="skill-card">Mobile App Development (Kivy)</li>
-              <li class="skill-card">Smartphone Repair (Hardware & Software)</li>
-              <li class="skill-card">Network Troubleshooting</li>
-                <li class="skill-card">Database Management</li>
-                
-            </ul>
-            </section>
-     <section id="Project">
-    <h2>Build APK</h2>
-    <div class="photo-container">
-        <div class="project-card">
-            <img src="buildozer.jpg">
-            <p>Buildozer configuration</p>
-        </div>
-        <div class="project-card">
-            <img src="Aplikasikalkulator.jpg">
-            <p>It's already an application</p>
-        </div>
-        <div class="project-card">
-            <img src="Bukaaplikasikalkulator.jpg">
-            <p>The application has been running</p>
-        </div>
-    </div> <div class="video-skill-container">
-        <h3>Demo Project / Activity</h3>
-        <div class="video-wrapper">
-            <video controls poster="thumbnail-video.jpg">
-                <source src="Myvideo.mp4" type="video/mp4">
-                Browser kamu tidak mendukung tag video.
-            </video>
-        </div>
-        <p class="video-desc">
-            <span>Project:</span> This video shows how I created a website port scanning tool.
+<main>
+    <section id="Home">
+        <img src="images%20(7).jpeg" alt="Awal Marudut Gultom" class="profile-pic">
+        <h2 class="Namaku">Awal Marudut Gultom</h2>
+        <p class="tagline">
+            Cyber Security Enthusiast | Python Developer | Network Engineer
         </p>
-    </div>
-            </div>
-        </section>
+        <br>
+        <p style="max-width: 600px; margin: 0 auto;">Menganalisis kerentanan, membangun tools keamanan, dan reverse engineering untuk menemukan celah sistem secara etis.</p>
+    </section>
 
-        <section id="Contact">
+    <section id="About">
+        <h2 class="section-title">About Me</h2>
+        <p class="tentang">
+            Saya adalah seorang <strong>cybersecurity researcher & Python developer</strong> otodidak. 
+            Berpengalaman dalam pengujian penetrasi, network scanning, serta analisis malware/firmware 
+            menggunakan IDA Pro dan Ghidra. Saya memiliki ketertarikan tinggi pada <strong>reverse engineering 
+            dan vulnerability discovery</strong>. Saat ini saya fokus mengembangkan tools keamanan berbasis Python 
+            dan mempelajari mekanisme enkripsi pada firmware perangkat.
+        </p>
+    </section>
+
+    <section id="Skill">
+        <h2 class="section-title">Technical Skills</h2>
+        <ul class="skill-container">
+            <li class="skill-card">Python (Socket, Requests, Threading, Crypto)</li>
+            <li class="skill-card">IDA Pro / Ghidra (Static Analysis)</li>
+            <li class="skill-card">Web Vulnerability Scanning (SQLi, XSS)</li>
+            <li class="skill-card">Network Port Scanner</li>
+            <li class="skill-card">Reverse Engineering (AES encrypted binary)</li>
+            <li class="skill-card">Linux / Kali Linux</li>
+            <li class="skill-card">Network Engineering (L2/L3)</li>
+            <li class="skill-card">Firmware Analysis (Huawei)</li>
+            <li class="skill-card">Ethical Hacking Lab</li>
+        </ul>
+    </section>
+
+    <section id="Project">
+        <h2 class="section-title">Cybersecurity Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="buildozer.jpg" alt="port scanner">
+                <div class="project-info">
+                    <h3>Advanced Port Scanner + Banner</h3>
+                    <p>Multi‑thread Python scanner untuk mendeteksi port terbuka dan grabbing banner service. Digunakan di lab Metasploitable 2.</p>
+                    <span class="tech-tag">Python</span><span class="tech-tag">socket</span><span class="tech-tag">threading</span>
+                    <div><a href="#" class="github-link">🔗 GitHub (Port Scanner)</a></div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="Aplikasikalculator.jpg" alt="web vuln scanner">
+                <div class="project-info">
+                    <h3>Web Vulnerability Scanner</h3>
+                    <p>Mendeteksi SQLi (error based), XSS reflected, dan Path Traversal pada parameter URL. Dilengkapi payload custom.</p>
+                    <span class="tech-tag">Python</span><span class="tech-tag">requests</span><span class="tech-tag">security</span>
+                    <div><a href="#" class="github-link">🔗 GitHub (Web Scanner)</a></div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="Bukaaplikasikalkulator.jpg" alt="reverse engineering">
+                <div class="project-info">
+                    <h3>Analisis Firmware Huawei (AES)</h3>
+                    <p>Reverse engineering xloader & fastboot terenkripsi AES menggunakan IDA Pro. Berhasil mengidentifikasi struktur header dan rutin dekripsi.</p>
+                    <span class="tech-tag">IDA Pro</span><span class="tech-tag">AES</span><span class="tech-tag">ARM</span>
+                    <div><a href="#" class="github-link">🔗 Case Study / Writeup</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-skill-container">
+            <h3>📹 Demo: Port Scanning di Lab Sendiri</h3>
+            <div class="video-wrapper">
+                <video controls poster="buildozer.jpg">
+                    <source src="Myvideo.mp4" type="video/mp4">
+                    Browser tidak support video.
+                </video>
+            </div>
+            <p class="video-desc">
+                <span style="color:#818cf8;">Project:</span> Menjalankan port scanner multi‑thread terhadap target Metasploitable 2, mendeteksi port 21,22,80,445, dan lainnya.
+            </p>
+        </div>
+    </section>
+
+    <section id="Contact">
+        <div class="contact-form">
+            <h3>Hubungi Saya</h3>
             <form action="https://formspree.io/f/mjgewyaa" method="POST" target="_blank">
-                <div>
-                    <label> Name</label><br>
-                    <input type="text" name="nama" placeholder=" Enter your name">
-                </div>
-
-                <div>
-                    <label>Email</label><br>
-                    <input type="text" name="email" placeholder="Enter your email">
-                </div>
-                <div>
-                    <label>Message</label><br>
-                    <textarea name="Message" rows="5" placeholder="Write Message..."></textarea>
-                </div>
-                <br>
-                <button type="submit">Submit</button>
+                <input type="text" name="nama" placeholder="Nama lengkap" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="Message" rows="4" placeholder="Pesan / tawaran kerja sama..."></textarea>
+                <button type="submit">Kirim Pesan</button>
             </form>
-          
-            <div class="Social-media">
-                <a href="https://youtube.com/@poordays?si=lXq4KuS7hgh8X_LX" target="_blank" rel="noopener noreferrer" >
-                    <img src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" alt="Youtube channel saya" height="auto">
-                </a>
-                <span style="pointer-events: none ;">Visit my Youtube channel</span>
-                
-                <a href="http://wa.me/6285810176672" target="_blank">
-                    <img src="https://img.icons8.com/?size=100&id=7OeRNqg6S7Vf&format=png&color=000000" alt="Wa saya" height="auto">
-                </a>
-                <span style="pointer-events: none;">Contact me on Whatsapp</span>
-                
-                <a href="http://facebook.com/awalread.1" target="_blank">
-                    <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="" height="auto">
-                </a>
-                <span style="pointer-events: none;">Visit my Facebook</span>
+        </div>
+        <div class="Social-media">
+            <h3>Social & Media</h3>
+            <div class="social-item">
+                <img src="https://img.icons8.com/ios-glyphs/30/ffffff/youtube-play.png" alt="youtube">
+                <a href="https://youtube.com/@poordays?si=lXq4KuS7hgh8X_LX" target="_blank">YouTube Channel</a>
             </div>
-        </section>
-    </main>
-    <br>
-    <br>
-    <footer class="vs-footer">
-        <p>&copy; 2021 <strong>By  💀 Awal Marudut Gultom 💀  </strong>. All Rights Reserved.</p>
-    </footer>
-
-    <!-- ========== CHATBOT POPUP ========== -->
-    <button id="chat-btn" onclick="toggleChat()">💬 Tanya AI</button>
-
-    <div id="chat-overlay" onclick="toggleChat()"></div>
-
-    <div id="chat-popup">
-        <div id="chat-header">
-            <span>🤖 Awal AI Assistant</span>
-            <button onclick="toggleChat()">✕</button>
+            <div class="social-item">
+                <img src="https://img.icons8.com/ios-glyphs/30/ffffff/whatsapp.png" alt="whatsapp">
+                <a href="http://wa.me/6285810176672" target="_blank">WhatsApp</a>
+            </div>
+            <div class="social-item">
+                <img src="https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.png" alt="facebook">
+                <a href="http://facebook.com/awalread.1" target="_blank">Facebook</a>
+            </div>
+            <div class="social-item">
+                <img src="https://img.icons8.com/ios-glyphs/30/ffffff/github.png" alt="github">
+                <a href="#">GitHub (portfolio)</a>
+            </div>
         </div>
-        <div id="chat-messages">
-            <div class="msg bot">Halo! Saya AI assistant milik Awal M Gultom . Ada yang bisa saya bantu? 😊</div>
-        </div>
-        <div id="chat-input-area">
-            <input id="chat-input" type="text" placeholder="Ketik pesan..." onkeydown="if(event.key==='Enter') sendMsg()"/>
-            <button onclick="sendMsg()">➤</button>
-        </div>
-    </div>
+    </section>
+</main>
 
-    <style>
-        #chat-btn {
-            position: fixed; bottom: 28px; right: 28px; z-index: 9998;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white; border: none; padding: 13px 22px;
-            border-radius: 30px; font-size: 15px; cursor: pointer;
-            box-shadow: 0 4px 20px rgba(79,70,229,0.5);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        #chat-btn:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(79,70,229,0.6); }
+<footer>
+    <p>&copy; 2025 Awal Marudut Gultom — Cybersecurity & Python Portfolio. All rights reserved.</p>
+</footer>
 
-        #chat-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.4); z-index: 9998;
-            backdrop-filter: blur(3px);
-        }
-        #chat-overlay.open { display: block; }
+<button id="chat-btn" onclick="alert('Demo chatbot: hubungi via kontak di atas ya.')">💬 Tanya AI</button>
 
-        #chat-popup {
-            display: none; position: fixed;
-            top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
-            width: 90%; max-width: 400px; height: 520px;
-            background: white; border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            z-index: 9999; flex-direction: column; overflow: hidden;
-            transition: transform 0.25s ease, opacity 0.25s ease;
-            opacity: 0;
-        }
-        #chat-popup.open {
-            display: flex; transform: translate(-50%, -50%) scale(1); opacity: 1;
-        }
-
-        #chat-header {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white; padding: 16px 18px;
-            display: flex; justify-content: space-between; align-items: center;
-            font-weight: bold; font-size: 15px;
-        }
-        #chat-header button {
-            background: rgba(255,255,255,0.2); border: none; color: white;
-            width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px;
-        }
-
-        #chat-messages {
-            flex: 1; overflow-y: auto; padding: 14px;
-            display: flex; flex-direction: column; gap: 10px;
-            background: #f8f8fc;
-        }
-
-        .msg { max-width: 82%; padding: 10px 14px; border-radius: 16px; font-size: 14px; line-height: 1.5; word-wrap: break-word; }
-        .msg.user { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; align-self: flex-end; border-radius: 16px 16px 4px 16px; }
-        .msg.bot { background: white; color: #333; align-self: flex-start; border-radius: 16px 16px 16px 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        .msg.typing { color: #aaa; font-style: italic; background: white; }
-
-        #chat-input-area {
-            display: flex; padding: 12px; gap: 8px;
-            border-top: 1px solid #eee; background: white;
-        }
-        #chat-input {
-            flex: 1; border: 1.5px solid #e0e0f0; border-radius: 24px;
-            padding: 9px 16px; font-size: 14px; outline: none;
-            transition: border-color 0.2s;
-        }
-        #chat-input:focus { border-color: #4f46e5; }
-        #chat-input-area button {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white; border: none; border-radius: 50%;
-            width: 40px; height: 40px; cursor: pointer; font-size: 17px;
-            transition: transform 0.2s;
-        }
-        #chat-input-area button:hover { transform: scale(1.1); }
-    </style>
-
-    <script>
-        // Ganti dengan URL Railway kamu setelah deploy!
-        const BACKEND_URL = "https://web-production-d6bd4.up.railway.app";
-
-        function toggleChat() {
-            document.getElementById('chat-popup').classList.toggle('open');
-            document.getElementById('chat-overlay').classList.toggle('open');
-            if (document.getElementById('chat-popup').classList.contains('open')) {
-                document.getElementById('chat-input').focus();
-            }
-        }
-
-        function addMsg(teks, role) {
-            const div = document.createElement('div');
-            div.className = 'msg ' + role;
-            div.textContent = teks;
-            document.getElementById('chat-messages').appendChild(div);
-            document.getElementById('chat-messages').scrollTop = 99999;
-            return div;
-        }
-
-        async function sendMsg() {
-            const input = document.getElementById('chat-input');
-            const pesan = input.value.trim();
-            if (!pesan) return;
-            input.value = '';
-            addMsg(pesan, 'user');
-            const typing = addMsg('Mengetik...', 'bot typing');
-
-            try {
-                const res = await fetch(BACKEND_URL + '/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ pesan })
-                });
-                const data = await res.json();
-                typing.remove();
-                addMsg(data.balasan, 'bot');
-            } catch {
-                typing.remove();
-                addMsg('❌ Gagal konek ke server. Coba lagi nanti.', 'bot');
-            }
-        }
-    </script>
-    <!-- ========== END CHATBOT ========== -->
-
-    <script>
-        const form = document.querySelector('#Contact form');
-        const inputs = form.querySelectorAll('input, textarea');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-        function checkInputs() {
-            let allFilled = true;
-            inputs.forEach(input => {
-                if (input.value.trim() === "") {
-                    allFilled = false;
-                }
-            });
-
-            if (allFilled) {
-                submitBtn.classList.add('btn-aktif');
-            } else {
-                submitBtn.classList.remove('btn-aktif');
-            }
-        }
-
-        inputs.forEach(input => {
-            input.addEventListener('input', checkInputs);
-        });
-    </script>
-
-    <script>
-        const cards = document.querySelectorAll('.project-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 15;
-                const rotateY = (centerX - x) / 15;
-                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transition = "all 0.5s ease";
-                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
-            });
-
-            card.addEventListener('mouseenter', () => {
-                card.style.transition = "none";
-            });
-        });
-    </script>
-    <script>
-    window.addEventListener("load", function() {
-        const loader = document.getElementById("loader");
-        setTimeout(() => {
-            loader.classList.add("fade-out");
-        }, 1000);
-    });
-    </script>
-
-    <script>
-    window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".Semua_menu ul li a");
-        
-        let currentId = "";
-
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 100) {
-                currentId = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + currentId) {
-                link.classList.add("active");
-                link.scrollIntoView({
-                    behavior: "smooth",
-                    inline: "center",
-                    block: "nearest"
-                });
-            }
-        });
-    });
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
-
-
-
-
