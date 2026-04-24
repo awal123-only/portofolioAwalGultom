@@ -1,799 +1,268 @@
-*{
-    margin: 0;
-}
-
-
-
-.Semua_menu{
-    color: white;
-    min-height: 15px;
-    margin: 0;
-    font-family: "Coiny", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    transform: translateX(10px);
-     display: flex;
-    overflow-x: auto; /* Kunci agar bisa di-scroll ke samping kalau kepotong */
-    white-space: nowrap; /* Mencegah menu turun ke baris baru */
-    -webkit-overflow-scrolling: touch; /* Biar scroll-nya halus di iPhone/Safari */
-    scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
-    padding: 10px 0;
-}
-/* 3. Bagian Menu (Home, About, dll) */
-.Semua_menu ul {
-    display: flex;       /* Menu berjejer ke samping */
-    list-style: none;
+/* style.css - versi modern untuk portofolio cybersecurity */
+* {
     margin: 0;
     padding: 0;
-    gap: 15px;           /* Jarak antar menu */
-    padding: 0 15px;
-     flex-direction: row !important; /* Memastikan tetap berbaris ke samping */
-  
-     
-}
-.Semua_menu::-webkit-scrollbar {
-    display: none; /* Sembunyikan scrollbar di Chrome/Safari */
-}
-
-
-
-nav{
-   
-    height: 80px;
-     background-color: rgb(0, 102, 255);
-    height: 80px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;             /* Mengaktifkan mode baris */
-    justify-content: space-between; /* Brand di kiri, Menu di kanan */
-    align-items: center;       /* SEMUA ELEMEN SEJAJAR TENGAH (Vertikal) */
-    padding: 0 5%;             /* Jarak dari pinggir layar */
-    box-sizing: border-box;
-    backdrop-filter: blur(10px);
-}
-
-/* memberi jarak antar menu*/
-nav li{
-    margin-left: 20px; /*jarak antar tulisan menu*/
-    
-}
-
-nav a{
-    text-decoration: none; /*menghilakan garis bawah*/
-    color: white;
-    position: relative;
-    font-family: "Coiny", system-ui;
-    transition: all 0.3s ease;
-}
-/* Gaya saat menu aktif/terpilih (Scrollspy) */
-.Semua_menu ul li a.active {
-    background-color: white !important;
-    color: #007ACC !important; 
-    font-weight: bold !important;
-    border-radius: 8px;
-    padding: 8px 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transform: scale(1.1);
-}
-
-.Semua_menu ul li a.active::first-letter {
-    color: #ffd700 !important;
-}
-
-/* GAYA DASAR MENU */
-.Semua_menu ul li a {
-    text-decoration: none;
-    color: white !important; /* Warna teks saat diam */
-    padding: 8px 15px;
-    border-radius: 8px;
-    display: inline-block;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* EFEK SAAT DISENTUH POINTER (HOVER) */
-.Semua_menu ul li a:hover {
-    background-color: white !important; /* Jadi kotak putih */
-    color: #0066ff !important;         /* Teks jadi biru */
-    font-weight: bold !important;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3) !important; /* Efek bayangan */
-    transform: scale(1.1) translateY(-2px); /* Membesar & naik sedikit */
-}
-
-/* Huruf pertama jadi kuning saat disentuh pointer */
-.Semua_menu ul li a:hover::first-letter {
-    color: #ffcc00 !important;
-}
-
-
-#Home{
-    text-align: center;
-    padding: 100px 20px;
-   
-  
-}
-
-#Home h2.Namaku{
-    font-size: 30px;
-   
-}
-
-.profile-pic {
-    width: 200px; /*lebar foto*/
-    height: 200px; /*tinggi foto*/
-    border-radius: 50%; /*membuat foto jadi bulat*/
-    object-fit: cover; /*agar foto tidak gepeng*/
-    border: 5px solid white; /*memberi bingkai putih tipis*/
-    box-shadow: 0 0 20px rgba(0, 0, 0, 1); /*membuat bayangan halus agar kelihatan estetis*/
-    margin-bottom: 20px;
-    transition: all 0.5s ease !important;
-    
-}
-.profile-pic:hover {
-    transform: scale(1.1) rotate(5deg); /* Membesar dan miring */
-    filter: drop-shadow(0 0 15px #a2d9ff); /* Efek glowing biru */
-}
-
-#About{
-    text-align: center;
-    padding: 80px 20px; /* SUDAH DITAMBAH px */
-    
-    
-}
-
-#About h2{
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    display: inline-block; /* Supaya transisi scale enak dilihat */
-    transition: transform 0.3s ease;
-}
-
-.tentang{
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: #555;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Perbaikan typo font-family */
-}
-
-#Skill{
-     text-align: center;
-    padding: 80px 20px; /* SUDAH DITAMBAH px */
-}
-
-.skill-container{
-    max-width: 800px; /* SUDAH DITAMBAH ANGKA */
-    margin: 0 auto;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: #555;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Perbaikan typo font-family */
-}
-/* Kontainer utama untuk efek 3D */
-.photo-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 50px 20px;
-    /* Memberi jarak pandang 3D */
-    perspective: 1000px; 
-}
-
-/* Mengatur ukuran kartu agar lebih panjang ke bawah */
-.project-card {
-    width: 300px;
-    min-height: 450px; /* Ukuran saya buat lebih panjang sesuai request kamu */
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    text-align: center;
-    
-    
-    /* Setup Animasi 3D */
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
-    transform-style: preserve-3d;
-}
-
-/* Efek 3D saat kursor mendekat (Hover) */
-.project-card:hover {
-    /* Foto sedikit maju dan terangkat */
-    transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-/* Mengatur foto agar rapi di dalam kartu yang panjang */
-.project-card img {
-   width: 100%;
-    height: 350px; 
-    
-    object-fit: contain; 
-    
-    /* background tipis agar kalau gambar aslinya kecil, tetap rapi */
-    background-color: #f9f9f9; 
-    
-    border-radius: 15px;
-    margin-bottom: 15px;
-    transform: translateZ(30px);
-}
-
-.project-card p {
-    font-family: "Oswald", sans-serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #333;
-    /* Teks juga diberi efek kedalaman */
-    transform: translateZ(20px);
-}
-
-html {
-    scroll-behavior: smooth; /* Scroll mulus */
-    scroll-padding-top: 80px; /* Biar pas diklik nggk kepotong menu */
-}
-
-
-/* Tambahkan padding di main supaya konten nggk ketutup nav yang di-fixed */
-main {
-    padding-top: 80px; 
-}
-
-
-section {
-    min-height: 100vh; /* Tiap menu memenuhi 1 layar penuh */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Konten di tengah secara vertikal */
-    align-items: center;    /* Konten di tengah secara horizontal */
-    padding: 20px;
-    box-sizing: border-box;
-}
-section, #Contact {
-    min-height: auto !important;
-    height: auto !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-}
-.project-card, .profile-pic, nav a {
-    will-change: transform; /* Memberitahu browser untuk siap-siap animasi (lebih lancar) */
-}
-/* --- PERBAIKAN AKHIR: ANIMASI TOMBOL & JARAK BAWAH --- */
-
-/* 1. Tombol Submit dengan Animasi */
-#Contact button {
-     width: 100%;
-    padding: 15px;
-    background-color: #a2d9ff;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    
-    /* Animasi Dasar */
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Efek saat kursor menyentuh tombol (Hover) */
-#Contact button:hover {
-    background-color: #007ACC; /* Berubah warna jadi biru tegas */
-    color: #ffffff;            /* Tulisan jadi putih */
-    transform: translateY(-3px); /* Tombol naik sedikit */
-    box-shadow: 0 5px 15px rgba(0, 122, 204, 0.3); /* Bayangan biru */
-}
-
-/* Efek saat tombol diklik  */
-#Contact button:active {
-    transform: scale(0.95); /* Tombol mengecil sedikit saat ditekan */
-}
-
-/* --- PERBAIKAN TOTAL: FORM TETAP LANDSCAPE & SOSMED BERBARIS --- */
-
-#Contact {
-    min-height: auto !important; 
-    height: auto !important;
-    padding-bottom: 0 !important; 
-    margin-bottom: 0 !important;
-}
-
-
-#Contact form {
-    width: 85% !important;
-    max-width: 800px;
-    background: #ffffff;
-    padding: 30px 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
     box-sizing: border-box;
 }
 
-/* Supaya div di dalam form tidak ikut berbaris ke samping */
-#Contact form .form-group {
-    width: 100%;
-    text-align: left;
-    display: block; /* Memastikan input tetap di bawah label */
-}
-
-#Contact label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #333;
-    text-align: left;
-}
-
-#Contact input, 
-#Contact textarea {
-    width: 100% !important;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px; /* Kotak */
-    box-sizing: border-box;
-}
-
-
-
-.Social-media {
-    margin-top: 30px !important; 
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-}
-
-.Social-media a {
-    display: flex;
-    flex-direction: column;        /* Icon di atas, teks di bawah */
-    align-items: center;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.Social-media img {
-    width: 40px;
-    height: 40px;
-}
-
-.Social-media span {
-    margin-top: 8px;
-    font-size: 0.8rem;
-    color: #555;
-}
-
-.Social-media a:hover {
-    transform: translateY(-5px);
-}
-
-
-
-/* Footer Box */
-.vs-footer {
-    background-color: #0070cc !important; /* Warna biru wave */
-    margin-top: -2px !important; /* Menutup celah putih antara wave dan footer */
-    padding: 10px 0 30px 0 !important;
-}
-
-/* Tulisan Copyright */
-.vs-footer p {
-    color: white !important;
-    margin: 0 !important;
-    font-size: 14px;
-    position: relative;
-    z-index: 101; /* Memastikan tulisan ada di lapisan paling atas */
-    text-align: center;
-}
-
-
-
-@media (max-width: 768px) {
-    .wave-footer {
-        margin-top: 20px;
-    }
-    
-    .wave-footer svg {
-        height: 50px; /* Batasi tinggi gelombang di HP agar tidak terlalu makan tempat */
-    }
-
-    .vs-footer {
-        padding: 20px 0;
-    }
-}
-
-nav img {
-    width: 50px; /* Atur ukuran gambar sesuai selera */
-    height: auto;
-    margin-left: 0%; /* Jarak dari pinggir kiri */
-    cursor: pointer;
-    
-    /* Posisikan agar sejajar dengan menu */
-    display: inline-block;
-    vertical-align: middle;
-    
-    /* Jalankan animasi melambai */
-    animation: hi-goyang 2s ease-in-out infinite;
-    transform-origin: bottom center;
-}
-
-/* Animasi Melambai (Waving) */
-@keyframes hi-goyang {
-    0% { transform: rotate(0deg); }
-    15% { transform: rotate(15deg); }  /* Miring kanan */
-    30% { transform: rotate(-10deg); } /* Miring kiri */
-    45% { transform: rotate(10deg); }
-    60% { transform: rotate(-5deg); }
-    75% { transform: rotate(2deg); }
-    100% { transform: rotate(0deg); }
-}
-
-/* Tambahan: Efek kalau kursor nempel*/
-nav img:hover {
-    animation-play-state: paused; /* Berhenti goyang pas disentuh */
-    transform: scale(1.2);
-    transition: 0.3s;
-}
-/* Container untuk gambar dan teks */
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Jarak antara gambar dan tulisan */
-}
-
-/* Gaya tulisan menyapa */
-.greeting {
-    font-family: "Coiny", system-ui;
-    font-size: 18px;
-    color: whitesmoke;
-    font-weight: bold;
-    opacity: 0.9;
-    /* Animasi teks halus */
-    animation: text-glow 2s ease-in-out infinite alternate;
-}
-
-/* Animasi cahaya pada teks */
-@keyframes text-glow {
-    from {
-        text-shadow: 0 0 5px rgba(255,255,255,0.2);
-    }
-    to {
-        text-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 20px #a2d9ff;
-    }
-}
-
-/* Gunakan kembali animasi goyang yang tadi */
-@keyframes hi-goyang {
-    0%, 100% { transform: rotate(0deg); }
-    20% { transform: rotate(15deg); }
-    40% { transform: rotate(-10deg); }
-    60% { transform: rotate(10deg); }
-    80% { transform: rotate(-5deg); }
-}
-/* 1. Navigasi Utama (Container) */
-
-
-/* Menghilangkan titik-titik di kontainer skill */
-.skill-container {
-    list-style: none !important; /* Memaksa titik hilang */
-    padding: 0;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap; /* Supaya kalau layar kecil, dia turun ke bawah otomatis */
-    justify-content: center;
-    gap: 15px; /* Jarak antar kotak skill */
-    max-width: 900px;
-}
-
-/* Membuat tampilan list menjadi kotak (card) */
-.skill-card {
-    list-style: none !important; /* Memastikan titik hilang di tiap item */
-    background: #007ACC;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-family: 'Oswald', sans-serif;
-    transition: all 0.3s ease;
-    cursor: default;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-/* Animasi saat kursor menyentuh kotak skill */
-.skill-card:hover {
-    transform: translateY(-5px) scale(1.1);
-    background: #a2d9ff;
-    color: #000;
-}
-/* --- SETTING RESPONSIF (BIAR PAS DI HP) --- */
-@media screen and (max-width: 768px) {
-    
-    /* Navigasi: Atur ulang ruang agar muat semua */
-    nav {
-        padding: 0 10px; /* Kurangi jarak pinggir */
-        justify-content: space-around; /* Bagi ruang lebih adil */
-    }
-}
-/* Container Utama Video */
-.video-skill-container {
-    width: 85%;            /* Membuat video jauh lebih besar */
-    max-width: 1000px;     /* Batas maksimal agar tidak terlalu lebar di monitor raksasa */
-    margin: 60px auto;     /* Jarak atas-bawah yang lega agar tidak menempel ke form */
-    text-align: center;
-    padding: 20px;
-    background: #ffffff;   
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05); /* Bayangan halus */
-}
-
-/* Judul Demo */
-.video-skill-container h3 {
-    font-family: 'Coiny', system-ui;
-    margin-bottom: 25px;
-    color: #333;
-}
-
-/* Kotak Video */
-.video-wrapper {
-    width: 100%;
-    aspect-ratio: 16 / 9;  /* Memaksa format lanskap layar lebar */
-    background: #000;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-}
-
-.video-wrapper video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;   /* Menjaga rasio video asli */
-}
-
-/* Teks Deskripsi (Dirapikan) */
-.video-desc {
-    margin-top: 30px;      /* Jarak dari video */
-    padding: 20px;
-    background: #f4f4f4;   /* Warna abu-abu muda yang kontras dengan teks */
-    border-left: 6px solid #007ACC;
-    border-radius: 10px;
-    text-align: left;
-    color: #333;           /* Tulisan hitam agar jelas terbaca */
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.video-desc span {
-    font-weight: bold;
-    color: #007ACC;
-    display: block;
-    margin-bottom: 5px;
-}
-
-/* Agar Pas di HP */
-@media screen and (max-width: 768px) {
-    .video-skill-container {
-        width: 95%;
-        margin: 30px auto;
-        padding: 10px;
-    }
-    
-    .video-desc {
-        font-size: 0.9rem;
-    }
-}
-
-/* Kita satukan semua ID dan Class judul dalam satu perintah */
-#About h2, 
-#Skill h2, 
-#Project h2, 
-.video-skill-container h3, 
-.section-title {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-    font-size: 2.5rem !important;
-    font-weight: 600 !important;
-    color: #333 !important;
-    text-align: center !important;
-    display: inline-block !important;
-    margin-bottom: 20px !important;
-    transition: transform 0.3s ease, color 0.3s ease !important;
-    cursor: pointer;
-    /* Reset gaya Coiny yang mungkin tertinggal */
-    font-style: normal !important;
-    text-transform: none !important;
-}
-
-#About h2:hover, 
-#Skill h2:hover, 
-#Project h2:hover, 
-.video-skill-container h3:hover, 
-.section-title:hover {
-    transform: scale(1.1) !important;
-    color: #a2d9ff !important;
-}
-
-.tentang, 
-.video-desc, 
-.tagline {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-    font-size: 1.2rem !important;
-    color: #555 !important;
-    line-height: 1.8 !important;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 10px !important;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    display: block !important;
-}
-
-.tentang:hover, 
-.video-desc:hover, 
-.tagline:hover {
-    transform: translateY(-10px) !important;
-    color: #000 !important;
-}
-/* Menurunkan tulisan Build APK agar tidak terlalu rapat ke atas */
-#Project h2.section-title, 
-#Project h2 {
-    margin-top: 50px !important; /* Tambahkan jarak dari atas */
-    margin-bottom: 30px !important; /* Jarak ke kartu project di bawahnya */
-}
-
-#Project {
-    padding-top: 40px !important;
-    justify-content: flex-start !important; /* Agar tidak dipaksa ke tengah layar jika konten sedikit */
-}
-/* Animasi Muncul dari Bawah */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Terapkan ke Hero Section atau seluruh Body */
 body {
-    animation: fadeInUp 1.2s ease-out;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0B0E14;
+    color: #E5E9F0;
+    line-height: 1.5;
+    scroll-behavior: smooth;
 }
 
-/* Tambahkan efek halus pada teks judul */
-.hero-text h1 {
-    animation: fadeInUp 1.5s ease-out;
-}
+/* loader */
 #loader {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
-    background: #ffffff; /* Warna background loading */
+    height: 100%;
+    background: #0B0E14;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s;
 }
-
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #a2d9ff; /* Warna animasi */
+    width: 45px;
+    height: 45px;
+    border: 3px solid #2D3748;
+    border-top: 3px solid #4f46e5;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.fade-out { opacity: 0; visibility: hidden; }
+
+/* navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(11, 14, 20, 0.9);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #2D3748;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.brand img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4f46e5;
+}
+.greeting {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.Semua_menu ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+.Semua_menu a {
+    text-decoration: none;
+    color: #CBD5E1;
+    font-weight: 500;
+    transition: 0.2s;
+}
+.Semua_menu a:hover, .Semua_menu a.active {
+    color: #818cf8;
+}
+.Semua_menu a.active::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #818cf8;
+    width: 100%;
+    margin-top: 4px;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+/* section umum */
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 5%;
+}
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #4f46e5;
+    padding-left: 1rem;
 }
 
-.fade-out {
-    opacity: 0;
-    pointer-events: none;
+/* home */
+#Home {
+    text-align: center;
 }
-/* ===== MOBILE RESPONSIVE FIX ===== */
-@media screen and (max-width: 480px) {
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4f46e5;
+    margin-bottom: 1rem;
+}
+.Namaku {
+    font-size: 2rem;
+}
+.tagline {
+    color: #94A3B8;
+    font-size: 1.1rem;
+}
+.highlight {
+    color: #818cf8;
+    font-weight: 600;
+}
 
-    /* NAV */
+/* about */
+.tentang {
+    background: #111827;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border-left: 4px solid #4f46e5;
+}
+
+/* skill cards */
+.skill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    list-style: none;
+}
+.skill-card {
+    background: #1E293B;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #334155;
+    transition: 0.2s;
+}
+.skill-card:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+}
+
+/* project grid */
+.photo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+.project-card {
+    background: #111827;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #2D3748;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #4f46e5;
+}
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.project-card p {
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* video section */
+.video-skill-container {
+    margin-top: 3rem;
+    background: #111827;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+.video-wrapper video {
+    width: 100%;
+    border-radius: 0.8rem;
+}
+.video-desc {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+}
+
+/* contact form */
+#Contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+form {
+    flex: 1;
+}
+form input, form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0 1rem;
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 0.8rem;
+    color: white;
+}
+button[type="submit"] {
+    background: #4f46e5;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+.Social-media {
+    flex: 1;
+}
+.Social-media a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 1.5rem;
+    color: #CBD5E1;
+    text-decoration: none;
+}
+.Social-media img {
+    width: 28px;
+    vertical-align: middle;
+}
+
+/* footer */
+.vs-footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid #2D3748;
+    font-size: 0.8rem;
+}
+
+/* responsive */
+@media (max-width: 768px) {
     nav {
-        padding: 0 8px;
-        height: 65px;
-    }
-    .greeting {
-        font-size: 13px;
-    }
-    nav img {
-        width: 38px;
+        flex-direction: column;
+        gap: 1rem;
     }
     .Semua_menu ul {
-        gap: 4px;
-        padding: 0 6px;
-    }
-    .Semua_menu ul li a {
-        padding: 6px 9px;
-        font-size: 13px;
-    }
-
-    /* HOME */
-    #Home {
-        padding: 90px 16px 40px;
-    }
-    .profile-pic {
-        width: 140px;
-        height: 140px;
-    }
-    #Home h2.Namaku {
-        font-size: 22px;
-    }
-    .tagline {
-        font-size: 1rem !important;
-    }
-
-    /* ABOUT & SKILL */
-    #About, #Skill {
-        padding: 50px 16px;
-    }
-    #About h2, #Skill h2, #Project h2 {
-        font-size: 1.8rem !important;
-    }
-    .tentang {
-        font-size: 1rem !important;
-    }
-
-    /* PROJECT CARDS */
-    .photo-container {
-        padding: 20px 10px;
-        gap: 16px;
-    }
-    .project-card {
-        width: 100%;
-        min-height: auto;
-    }
-    .project-card img {
-        height: 220px;
-    }
-
-    /* VIDEO */
-    .video-skill-container {
-        width: 98%;
-        margin: 20px auto;
-        padding: 10px;
-    }
-
-    /* CONTACT FORM */
-    #Contact form {
-        width: 95% !important;
-        padding: 20px 16px;
-    }
-
-    /* SOCIAL MEDIA */
-    .Social-media {
-        gap: 16px;
+        gap: 1rem;
         flex-wrap: wrap;
     }
-    .Social-media span {
-        font-size: 0.7rem;
-    }
-
-    /* CHATBOT POPUP */
-    #chat-popup {
-        width: 95% !important;
-        height: 85dvh !important;
-        max-width: none !important;
-    }
-    #chat-btn {
-        bottom: 16px;
-        right: 16px;
-        padding: 10px 16px;
-        font-size: 14px;
+    .photo-container {
+        grid-template-columns: 1fr;
     }
 }
