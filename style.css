@@ -317,33 +317,43 @@ body.light-mode .tech-tag {
 }
 
 /* ========== VIDEO ========== */
-.video-skill-container {
+/* ========== VIDEO ========== */
+.video-skill-container,
+.video_virus {
     margin-top: 3rem;
     background: #111827;
     border-radius: 1rem;
     padding: 1.5rem;
     transition: background 0.3s;
 }
-body.light-mode .video-skill-container {
+body.light-mode .video-skill-container,
+body.light-mode .video_virus {
     background: #FFFFFF;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.video-wrapper {
+/* Wrapper untuk kedua video */
+.video-wrapper,
+.video-Malware {
     display: flex;
     justify-content: center;
     align-items: center;
     background: #000;
     border-radius: 0.8rem;
     overflow: hidden;
-    max-width: 600px;
-    max-height: 230px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 200px;   /* atur tinggi maksimal di sini (200px = kecil rapi) */
     margin: 0 auto;
 }
 
-.video-wrapper video {
+/* Video di dalam wrapper */
+.video-wrapper video,
+.video-Malware video {
+    width: auto;
+    height: auto;
     max-width: 100%;
-    max-height: 230px;
+    max-height: 200px;   /* sama dengan max-height wrapper */
     object-fit: contain;
     display: block;
     background: #000;
