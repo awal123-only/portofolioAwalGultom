@@ -338,6 +338,17 @@ body.light-mode .video-skill-container {
     font-size: 0.9rem;
 }
 
+.video-wrapper video {
+    width: 100%;
+    border-radius: 0.8rem;
+    max-height: 400px;
+    display: block; /* Menghilangkan gap di bawah video */
+    background-color: #000; /* Warna dasar jika video belum dimuat */
+    cursor: pointer;
+    object-fit: contain; 
+}
+
+
 /* ========== CONTACT ========== */
 #Contact {
     display: flex;
