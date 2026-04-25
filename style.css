@@ -328,23 +328,20 @@ body.light-mode .video-skill-container {
     background: #FFFFFF;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+/* Seragamkan ukuran semua video: tinggi tetap, lebar penuh */
 .video-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    aspect-ratio: 16 / 9;  /* Rasio standar, bisa disesuaikan */
     background: #000;
     border-radius: 0.8rem;
     overflow: hidden;
-    width: 100%;
 }
 
 .video-wrapper video {
     width: 100%;
-    max-height: 400px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;  /* Video 🤣 */
+    
     display: block;
-    background: #000;
-    border-radius: 0.8rem;
     cursor: pointer;
 }
 
