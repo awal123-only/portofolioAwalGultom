@@ -1,4 +1,4 @@
-// ========== CYBER RGB VISUAL EFFECTS ==========
+// ========== CYBER RGB VISUAL EFFECTS (tanpa mouse trail) ==========
 const canvas = document.getElementById('cyberCanvas');
 const trailCanvasEl = document.getElementById('trailCanvas');
 const ctx = canvas.getContext('2d');
@@ -45,22 +45,7 @@ function drawParticles() {
   ctx.shadowBlur = 0;
 }
 
-// mouse trail
-let trail = [];
-document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; trail.unshift({x:mouseX,y:mouseY}); if(trail.length>30) trail.pop(); });
-function drawTrail() {
-  tctx.clearRect(0,0,W,H);
-  if(trail.length<2) return;
-  for(let i=1;i<trail.length;i++) {
-    const alpha = 1 - i/trail.length;
-    const width = (1-i/trail.length)*5;
-    const col = colorArr[(frame+i)%colorArr.length];
-    tctx.strokeStyle = col; tctx.globalAlpha = alpha*0.7; tctx.lineWidth = Math.max(1, width);
-    tctx.beginPath(); tctx.moveTo(trail[i-1].x, trail[i-1].y); tctx.lineTo(trail[i].x, trail[i].y); tctx.stroke();
-  }
-}
-
-// MODE DRAWING
+// MODE DRAWING (grid, wave, tunnel, matrix)
 function drawGrid(t) {
   const horizon = H*0.45;
   ctx.strokeStyle = COLORS.cyan; ctx.lineWidth = 0.8;
@@ -133,7 +118,7 @@ btns.forEach(btn => {
 setInterval(() => { if(Math.random()>0.7) glitchFlash(); }, 3000);
 setInterval(() => { if(Math.random()<0.3) glitchFlash(); }, 5000);
 
-// ANIMASI LOOP
+// ANIMASI LOOP (tanpa drawTrail)
 function animate() {
   frame++;
   const t = performance.now();
@@ -148,7 +133,7 @@ function animate() {
   }
   updateParticles();
   drawParticles();
-  drawTrail();
+  // drawTrail();  // <-- sudah dihapus
   requestAnimationFrame(animate);
 }
 animate();
