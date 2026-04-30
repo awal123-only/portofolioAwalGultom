@@ -1,4 +1,4 @@
-// ========== CYBER RGB VISUAL EFFECTS (tanpa mouse trail) ==========
+// ========== CYBER RGB VISUAL EFFECTS ========== <>????????????? 0x00000602 anjai
 const canvas = document.getElementById('cyberCanvas');
 const trailCanvasEl = document.getElementById('trailCanvas');
 const ctx = canvas.getContext('2d');
@@ -6,7 +6,6 @@ const tctx = trailCanvasEl.getContext('2d');
 let W, H;
 let frame = 0;
 let currentMode = 'grid';
-let mouseX = 0, mouseY = 0;
 
 const COLORS = { cyan:'#00fff2', magenta:'#ff00e5', red:'#ff003c', green:'#39ff14', yellow:'#ffe600', blue:'#0080ff' };
 const colorArr = [COLORS.cyan, COLORS.magenta, COLORS.red, COLORS.green, COLORS.yellow, COLORS.blue];
@@ -19,33 +18,7 @@ function resize() {
 window.addEventListener('resize', resize);
 resize();
 
-// partikel
-let particles = [];
-function createParticle(x, y) {
-  const angle = Math.random() * Math.PI * 2;
-  const speed = 0.5 + Math.random() * 1.5;
-  return { x: x ?? Math.random() * W, y: y ?? Math.random() * H, vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed, size: 1+Math.random()*2, color: colorArr[Math.floor(Math.random()*colorArr.length)], life: 0.8+Math.random()*0.5, decay: 0.003 };
-}
-for(let i=0;i<100;i++) particles.push(createParticle());
-
-function updateParticles() {
-  for(let i=0;i<particles.length;i++) {
-    particles[i].x += particles[i].vx; particles[i].y += particles[i].vy; particles[i].life -= particles[i].decay;
-    if(particles[i].life <= 0 || particles[i].x < -100 || particles[i].x > W+100 || particles[i].y < -100 || particles[i].y > H+100) {
-      particles[i] = createParticle();
-    }
-  }
-}
-function drawParticles() {
-  for(let p of particles) {
-    ctx.globalAlpha = Math.min(0.8, p.life);
-    ctx.fillStyle = p.color; ctx.shadowBlur = 6; ctx.shadowColor = p.color;
-    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
-  }
-  ctx.shadowBlur = 0;
-}
-
-// MODE DRAWING (grid, wave, tunnel, matrix)
+// MODE putar baling baling bambu
 function drawGrid(t) {
   const horizon = H*0.45;
   ctx.strokeStyle = COLORS.cyan; ctx.lineWidth = 0.8;
@@ -118,7 +91,7 @@ btns.forEach(btn => {
 setInterval(() => { if(Math.random()>0.7) glitchFlash(); }, 3000);
 setInterval(() => { if(Math.random()<0.3) glitchFlash(); }, 5000);
 
-// ANIMASI LOOP (tanpa drawTrail)
+// ANIMASI LOOP 
 function animate() {
   frame++;
   const t = performance.now();
@@ -131,9 +104,6 @@ function animate() {
     case 'matrix': drawMatrix(t); break;
     default: drawGrid(t);
   }
-  updateParticles();
-  drawParticles();
-  // drawTrail();  // <-- sudah dihapus
   requestAnimationFrame(animate);
 }
 animate();
