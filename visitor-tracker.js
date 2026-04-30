@@ -1,43 +1,46 @@
-// File: visitor-tracker.js
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('https://ipapi.co/json/')
-    .then(response => response.json())
-    .then(data => {
-        const now = new Date();
-        const waktu = now.toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
-        const pesan = `⚠️ Ada yang kepoin nih! ⚠️\n\nWaktu: ${waktu}\nLokasi: ${data.city}, ${data.region}, ${data.country_name}\nIP: ${data.ip}\nPerangkat: ${data.org}`;
+// visitor-tracker.js
+// Ganti URL Worker dengan milik Anda
+const GEO_WORKER_URL = 'https://geo-worker.awalgultom123.workers.dev';        
+const TELEGRAM_WORKER_URL = 'https://telegram-notifier.awalgultom123.workers.dev'; 
 
-        // Tampilkan notifikasi (contoh di console)
-        console.log(pesan);
-        // Bisa juga pakai alert() atau tampilkan di elemen HTML
-        // alert(pesan);
-        tampilkanNotifikasi(pesan);
-    })
-    .catch(error => console.error('Gagal mengambil data pengunjung:', error));
-});
+async function kirimNotifikasi(pesan) {
+    try {
+        const response = await fetch(TELEGRAM_WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: pesan })
+        });
+        if (!response.ok) console.error('Telegram worker error');
+        else console.log('Notifikasi terkirim');
+    } catch (error) {
+        console.error('Gagal kirim notifikasi:', error);
+    }
+}
 
-function tampilkanNotifikasi(pesan) {
-    // Buat elemen notifikasi
-    const notif = document.createElement('div');
-    notif.textContent = pesan;
-    notif.style.position = 'fixed';
-    notif.style.bottom = '20px';
-    notif.style.right = '20px';
-    notif.style.backgroundColor = '#000';
-    notif.style.color = '#0f0';
-    notif.style.padding = '15px';
-    notif.style.borderRadius = '8px';
-    notif.style.zIndex = '9999';
-    notif.style.fontFamily = 'monospace';
-    notif.style.fontSize = '12px';
-    notif.style.border = '1px solid #0f0';
-    notif.style.boxShadow = '0 0 15px rgba(0,255,0,0.5)';
-    document.body.appendChild(notif);
-
-    // Notifikasi akan hilang setelah 7 detik
-    setTimeout(() => {
-        notif.style.opacity = '0';
-        notif.style.transition = 'opacity 1s';
-        setTimeout(() => notif.remove(), 1000);
-    }, 7000);
+if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        try {
+            const geoResponse = await fetch(GEO_WORKER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ lat, lng })
+            });
+            const geoData = await geoResponse.json();
+            const alamat = geoData.address || 'Alamat tidak ditemukan';
+            const waktu = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
+            const pesan = `⚠️ Ada yang kepoin nih! ⚠️\n\nWaktu: ${waktu}\nLokasi Real: ${alamat}\nKoord: ${lat}, ${lng}`;
+            kirimNotifikasi(pesan);
+        } catch (error) {
+            console.error('Gagal ambil alamat:', error);
+            kirimNotifikasi(`⚠️ Ada yang kepoin, tapi gagal dapatkan alamat. Error: ${error.message}`);
+        }
+    }, (error) => {
+        console.error('Gagal dapatkan lokasi pengunjung:', error);
+        kirimNotifikasi(`⚠️ Ada yang kepoin, tapi pengunjung menolak izin lokasi.`);
+    });
+} else {
+    console.log('Geolocation tidak didukung browser ini.');
+    kirimNotifikasi('⚠️ Ada yang kepoin, tapi browser tidak mendukung geolokasi.');
 }
