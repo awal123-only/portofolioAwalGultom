@@ -9,7 +9,7 @@ body {
   transition: background 0.3s ease, color 0.2s ease;
 }
 
-/* CANVAS LAYER (background efek neon) */
+/* CANVAS LAYER */
 #cyberCanvas {
   position: fixed;
   top: 0;
@@ -20,7 +20,7 @@ body {
   pointer-events: none;
 }
 
-/* Scanlines & Vignette overlay */
+/* Scanlines & Vignette */
 #scanlines, #vignette {
   position: fixed;
   inset: 0;
@@ -37,7 +37,7 @@ body {
   z-index: 3;
 }
 
-/* KONTEN PORTOFOLIO (di atas canvas) */
+/* KONTEN PORTOFOLIO */
 .content {
   position: relative;
   z-index: 20;
@@ -115,7 +115,7 @@ section {
   font-family: 'Orbitron', monospace;
 }
 
-/* Profile picture (gambar biasa) */
+/* Profile picture */
 .profile-pic {
   width: 150px;
   height: 150px;
@@ -125,8 +125,6 @@ section {
   margin-bottom: 1rem;
   object-fit: cover;
 }
-
-/* Video sebagai profile pic (bulat) */
 .profile-pic-video {
   width: 150px;
   height: 150px;
@@ -137,14 +135,11 @@ section {
   object-fit: cover;
   display: inline-block;
 }
-
 .tagline {
   font-size: 1.2rem;
   color: #a0aec0;
 }
-.highlight {
-  color: #ff00e5;
-}
+.highlight { color: #ff00e5; }
 
 /* Skill cards */
 .skill-container {
@@ -193,9 +188,7 @@ section {
   height: 160px;
   object-fit: cover;
 }
-.project-info {
-  padding: 1rem;
-}
+.project-info { padding: 1rem; }
 .tech-tag {
   display: inline-block;
   background: rgba(0,255,242,0.2);
@@ -253,15 +246,10 @@ video {
   border-radius: 1rem;
   margin-bottom: 0.5rem;
 }
-.social-item img {
-  width: 28px;
-}
-.social-item a {
-  text-decoration: none;
-  color: #e5e9f0;
-}
+.social-item img { width: 28px; }
+.social-item a { text-decoration: none; color: #e5e9f0; }
 
-/* Panel kontrol (tombol mode) */
+/* PANEL KONTROL - UKURAN KONSISTEN */
 .ctrl-panel {
   position: fixed;
   bottom: 20px;
@@ -274,20 +262,21 @@ video {
   gap: 10px;
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 60px;
   border: 1px solid #00fff2;
   max-width: 95vw;
+  width: auto;
   box-sizing: border-box;
 }
 .ctrl-panel button {
   background: none;
   border: 1px solid #00fff2;
   color: #00fff2;
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 40px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   transition: 0.2s;
   white-space: nowrap;
@@ -302,6 +291,28 @@ video {
   color: #ff00e5;
 }
 
+/* RESPONSIVE: ukuran tombol tetap nyaman, hanya sedikit adaptasi */
+@media (max-width: 700px) {
+  .ctrl-panel {
+    gap: 8px;
+    padding: 8px 16px;
+  }
+  .ctrl-panel button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .ctrl-panel {
+    gap: 6px;
+    padding: 6px 12px;
+  }
+  .ctrl-panel button {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
+
 /* Footer */
 .footer {
   text-align: center;
@@ -310,40 +321,7 @@ video {
   margin-top: 2rem;
 }
 
-/* Responsive */
-@media (max-width: 700px) {
-  .ctrl-panel {
-    padding: 6px 12px;
-    gap: 6px;
-    bottom: 12px;
-  }
-  .ctrl-panel button {
-    font-size: 10px;
-    padding: 4px 10px;
-  }
-}
-@media (max-width: 500px) {
-  .ctrl-panel button {
-    font-size: 9px;
-    padding: 4px 8px;
-  }
-}
-@media (max-width: 768px) {
-  .content {
-    padding: 1rem;
-  }
-  nav {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  .Semua_menu ul {
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-/* ========== LIGHT MODE OVERRIDE ========== */
+/* LIGHT MODE OVERRIDE hanya untuk warna) */
 body.light-mode {
   background: #f5f7fb !important;
   color: #1a2a3a !important;
