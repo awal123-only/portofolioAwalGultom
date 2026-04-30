@@ -1,4 +1,4 @@
-/* ========== RESET & GLOBAL ========== */
+/* ========== ?????? ========== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   background: #05050a;
@@ -249,34 +249,28 @@ video {
 .social-item img { width: 28px; }
 .social-item a { text-decoration: none; color: #e5e9f0; }
 
-/* PANEL KONTROL - UKURAN KONSISTEN */
+/* PANEL KONTROL - */
 .ctrl-panel {
   position: fixed;
   bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 20px;
   z-index: 999;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-  padding: 10px 20px;
-  border-radius: 60px;
+  gap: 8px;
+  background: rgba(0,0,0,0.6);
+  padding: 8px 12px;
+  border-radius: 40px;
+  backdrop-filter: blur(8px);
   border: 1px solid #00fff2;
-  max-width: 95vw;
-  width: auto;
-  box-sizing: border-box;
 }
 .ctrl-panel button {
   background: none;
   border: 1px solid #00fff2;
   color: #00fff2;
-  padding: 8px 16px;
-  border-radius: 40px;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 30px;
+  font-family: monospace;
+  font-size: 12px;
   cursor: pointer;
   transition: 0.2s;
   white-space: nowrap;
@@ -291,25 +285,21 @@ video {
   color: #ff00e5;
 }
 
-/* RESPONSIVE: ukuran tombol tetap nyaman, hanya sedikit adaptasi */
+/* Responsive hanya untuk panel (ukuran tetap proporsional, tidak mepet) */
 @media (max-width: 700px) {
   .ctrl-panel {
-    gap: 8px;
-    padding: 8px 16px;
+    gap: 6px;
+    padding: 6px 10px;
   }
   .ctrl-panel button {
-    padding: 6px 12px;
-    font-size: 12px;
+    font-size: 10px;
+    padding: 3px 8px;
   }
 }
 @media (max-width: 480px) {
-  .ctrl-panel {
-    gap: 6px;
-    padding: 6px 12px;
-  }
   .ctrl-panel button {
-    padding: 5px 10px;
-    font-size: 11px;
+    font-size: 9px;
+    padding: 3px 7px;
   }
 }
 
@@ -321,7 +311,7 @@ video {
   margin-top: 2rem;
 }
 
-/* LIGHT MODE OVERRIDE hanya untuk warna) */
+/* LIGHT MODE - canvas dimatikan oleh JS, di sini hanya gaya warna terang */
 body.light-mode {
   background: #f5f7fb !important;
   color: #1a2a3a !important;
