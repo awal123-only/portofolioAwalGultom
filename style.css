@@ -163,6 +163,15 @@ section {
   border-radius: 1rem;
   padding: 1rem;
 }
+.video-new-project {
+    margin-top: 2rem;
+    background: rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+body.light-mode .video-new-project {
+    background: rgba(255,255,255,0.9);
+}
 video { width: 100%; max-height: 300px; border-radius: 0.8rem; }
 /* Contact form */
 .contact-form input, .contact-form textarea {
